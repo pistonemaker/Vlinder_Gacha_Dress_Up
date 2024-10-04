@@ -1,16 +1,13 @@
 fileFormatVersion: 2
 guid: 1de9a18f3889488495300a77fb0a071e
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 21300000
-    second: 66807
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
-    sRGBTexture: 0
+    sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
@@ -31,30 +28,30 @@ TextureImporter:
   generateCubemap: 6
   cubemapConvolution: 0
   seamlessCubemap: 0
-  textureFormat: 47
+  textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
-    wrapW: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
   spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 9
+  alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: 0
+  spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -64,11 +61,35 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 1
-  cookieLightType: 1
+  applyGammaDecoding: 0
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -91,115 +112,11 @@ TextureImporter:
     overridden: 1
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Server
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites: []
-    outline:
-    - - {x: 10.53806, y: -126.9619}
-      - {x: 10.53806, y: 124.0381}
-      - {x: 98.53806, y: -126.9619}
-    - - {x: 14.53806, y: 127.0381}
-      - {x: 98.53806, y: -126.9619}
-      - {x: 10.53806, y: 124.0381}
-    - - {x: 95.53806, y: 127.0381}
-      - {x: 98.53806, y: -126.9619}
-      - {x: 14.53806, y: 127.0381}
-    - - {x: 99.53806, y: 19.03806}
-      - {x: 98.53806, y: -126.9619}
-      - {x: 95.53806, y: 127.0381}
-    - - {x: 99.53806, y: -116.9619}
-      - {x: 98.53806, y: -126.9619}
-      - {x: 99.53806, y: 19.03806}
-    - - {x: -99.46194, y: -117.9619}
-      - {x: -99.46194, y: 34.03806}
-      - {x: -95.46194, y: -126.9619}
-    - - {x: -94.46194, y: 127.0381}
-      - {x: -95.46194, y: -126.9619}
-      - {x: -99.46194, y: 34.03806}
-    - - {x: -11.46194, y: -126.9619}
-      - {x: -95.46194, y: -126.9619}
-      - {x: -94.46194, y: 127.0381}
-    - - {x: -13.46194, y: 127.0381}
-      - {x: -11.46194, y: -126.9619}
-      - {x: -94.46194, y: 127.0381}
-    - - {x: -11.46194, y: 125.0381}
-      - {x: -11.46194, y: -126.9619}
-      - {x: -13.46194, y: 127.0381}
-    physicsShape:
-    - - {x: -20.46194, y: -34.96194}
-      - {x: -20.46194, y: 37.03807}
-      - {x: -13.46194, y: 70.03806}
-      - {x: -13.46194, y: 119.0381}
-      - {x: -20.46194, y: 124.0381}
-      - {x: -31.46194, y: 126.0381}
-      - {x: -77.46194, y: 126.0381}
-      - {x: -89.46194, y: 124.0381}
-      - {x: -93.46194, y: 116.0381}
-      - {x: -92.46194, y: 65.03806}
-      - {x: -96.46194, y: 44.03806}
-      - {x: -97.46193, y: 27.03806}
-      - {x: -99.46194, y: 1.038055}
-      - {x: -99.46194, y: -109.9619}
-      - {x: -97.46193, y: -119.9619}
-      - {x: -91.46193, y: -126.9619}
-      - {x: -15.46194, y: -126.9619}
-      - {x: -12.46194, y: -122.9619}
-      - {x: -12.46194, y: -100.9619}
-      - {x: -18.46194, y: -67.96194}
-      - {x: 99.53806, y: -68.96194}
-      - {x: 98.53806, y: 1.038055}
-      - {x: 96.53806, y: 27.03806}
-      - {x: 91.53806, y: 63.03806}
-      - {x: 92.53806, y: 119.0381}
-      - {x: 85.53806, y: 126.0381}
-      - {x: 26.53806, y: 126.0381}
-      - {x: 16.53806, y: 122.0381}
-      - {x: 12.53806, y: 119.0381}
-      - {x: 12.53806, y: 70.03806}
-      - {x: 19.53806, y: 37.03807}
-      - {x: 20.53806, y: 37.03807}
-      - {x: 11.53806, y: -103.9619}
-      - {x: 11.53806, y: -125.9619}
-      - {x: 15.53806, y: -126.9619}
-      - {x: 90.53806, y: -126.9619}
-      - {x: 96.53806, y: -119.9619}
-      - {x: 99.53806, y: -105.9619}
+    outline: []
+    physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
     internalID: 0

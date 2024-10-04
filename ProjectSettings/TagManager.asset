@@ -41,3 +41,45 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 2678900767
+    locked: 0
+  - name: Behind Hair
+    uniqueID: 2468919125
+    locked: 0
+  - name: Wing
+    uniqueID: 2611340425
+    locked: 0
+  - name: Body
+    uniqueID: 827860033
+    locked: 0
+  - name: Socks
+    uniqueID: 3804055085
+    locked: 0
+  - name: Shoes
+    uniqueID: 3979266825
+    locked: 0
+  - name: Trousers
+    uniqueID: 2239049251
+    locked: 0
+  - name: Group 1
+    uniqueID: 1243068613
+    locked: 0
+  - name: Group 2
+    uniqueID: 1917796577
+    locked: 0
+  - name: Front Hair
+    uniqueID: 4236464773
+    locked: 0
+  - name: Hat
+    uniqueID: 2554593015
+    locked: 0
+  - name: Necklace
+    uniqueID: 2351924679
+    locked: 0
+  - name: Hand Bag
+    uniqueID: 1525602067
+    locked: 0
+  - name: UI
+    uniqueID: 675692595
+    locked: 0

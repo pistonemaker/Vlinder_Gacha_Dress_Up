@@ -10,16 +10,4 @@ public static class DataKey
     public const string Max_Level = "Max_Level";
 
     #endregion
-
-    // #region bool
-    //
-    //
-    //
-    // #endregion
-    //
-    // #region string
-    //
-    //
-    //
-    // #endregion
 }
