@@ -1,13 +1,18 @@
 using UnityEngine;
 
-public class Shoes : ItemType
+public class Shoes : ItemTypeButton
 {
-    public Sprite chooseItem;
-
     protected override void OnEnable()
     {
+        eItemType = EItemType.Shoes;
+        targetRenderer = Doll.Instance.shoes;
         base.OnEnable();
         canNullValue = true;
         canMultiValue = false;
+    }
+        
+    protected override void ShowItemGrid()
+    {
+        ItemBarManager.Instance.LoadOSA(eItemType);
     }
 }

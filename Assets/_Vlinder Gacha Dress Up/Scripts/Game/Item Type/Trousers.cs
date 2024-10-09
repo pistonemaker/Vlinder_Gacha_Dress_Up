@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class Trousers : ItemType
+public class Trousers : ItemTypeButton
 {
-    public Sprite chooseItem;
-
     protected override void OnEnable()
     {
+        eItemType = EItemType.Trouser;
+        targetRenderer = Doll.Instance.trousers;
         base.OnEnable();
         canNullValue = true;
         canMultiValue = false;

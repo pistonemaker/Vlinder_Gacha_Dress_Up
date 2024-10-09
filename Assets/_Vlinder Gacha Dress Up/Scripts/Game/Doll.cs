@@ -5,6 +5,7 @@ using UnityEngine;
 public class Doll : Singleton<Doll>
 {
     public List<SpriteRenderer> spriteRenderers;
+    public SpriteRenderer background;
     public SpriteRenderer behindHair;
     public SpriteRenderer wing;
     public SpriteRenderer body;
@@ -24,6 +25,7 @@ public class Doll : Singleton<Doll>
     public SpriteRenderer outsightShirt;
     public SpriteRenderer longDress;
     public SpriteRenderer frontHair;
+    public SpriteRenderer hairLight;
     public SpriteRenderer hat;
     public SpriteRenderer necklace;
     public SpriteRenderer handBag;
@@ -37,6 +39,7 @@ public class Doll : Singleton<Doll>
 
     private void GetSpriteRenderers()
     {
+        background = spriteRenderers.FirstOrDefault(sr => sr.name == "BG");
         behindHair = spriteRenderers.FirstOrDefault(sr => sr.name == "Behind Hair");
         wing = spriteRenderers.FirstOrDefault(sr => sr.name == "Wing");
         body = spriteRenderers.FirstOrDefault(sr => sr.name == "Body");
@@ -56,6 +59,7 @@ public class Doll : Singleton<Doll>
         outsightShirt = spriteRenderers.FirstOrDefault(sr => sr.name == "Outsight Shirt");
         longDress = spriteRenderers.FirstOrDefault(sr => sr.name == "Long Dress");
         frontHair = spriteRenderers.FirstOrDefault(sr => sr.name == "Front Hair");
+        hairLight = spriteRenderers.FirstOrDefault(sr => sr.name == "Light");
         hat = spriteRenderers.FirstOrDefault(sr => sr.name == "Hat");
         necklace = spriteRenderers.FirstOrDefault(sr => sr.name == "Necklace");
         handBag = spriteRenderers.FirstOrDefault(sr => sr.name == "Hand Bag");

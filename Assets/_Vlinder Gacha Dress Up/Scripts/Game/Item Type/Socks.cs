@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class Socks : ItemType
+public class Socks : ItemTypeButton
 {
-    public Sprite chooseItem;
-
     protected override void OnEnable()
     {
+        eItemType = EItemType.Socks;
+        targetRenderer = Doll.Instance.socks;
         base.OnEnable();
         canNullValue = true;
         canMultiValue = false;

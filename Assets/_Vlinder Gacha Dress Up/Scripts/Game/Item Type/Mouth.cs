@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class Mouth : ItemType
+public class Mouth : ItemTypeButton
 {
-    public Sprite chooseItem;
-
     protected override void OnEnable()
     {
+        eItemType = EItemType.Mouth;
+        targetRenderer = Doll.Instance.mouth;
         base.OnEnable();
         canNullValue = true;
         canMultiValue = false;

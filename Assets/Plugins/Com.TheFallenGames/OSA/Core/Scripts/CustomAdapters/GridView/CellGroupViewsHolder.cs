@@ -143,9 +143,8 @@ namespace Com.TheFallenGames.OSA.CustomAdapters.GridView
 
         protected virtual void UpdateIndicesOfContainingCells()
         {
-            for (int i = 0; i < _Capacity; ++i)
-                ContainingCellViewsHolders[i].ItemIndex = ItemIndex * _Capacity + i; 
+	        for (int i = 0; i < _Capacity; ++i)
+		        ContainingCellViewsHolders[i].ItemIndex = ItemIndex * _Capacity + i; 
         }
     }
-
 }

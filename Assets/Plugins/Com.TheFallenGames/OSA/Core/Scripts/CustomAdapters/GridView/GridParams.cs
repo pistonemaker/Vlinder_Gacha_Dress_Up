@@ -267,7 +267,11 @@ namespace Com.TheFallenGames.OSA.CustomAdapters.GridView
 			return _TheOnlyGroupPrefab;
 		}
 
-		public virtual int GetGroupIndex(int cellIndex) { return cellIndex / _CurrentUsedNumCellsPerGroup; }
+		public virtual int GetGroupIndex(int cellIndex)
+		{
+			//_CurrentUsedNumCellsPerGroup = 5;
+			return cellIndex / _CurrentUsedNumCellsPerGroup; 
+		}
 
 		public virtual int GetNumberOfRequiredGroups(int numberOfCells) { return numberOfCells == 0 ? 0 : GetGroupIndex(numberOfCells - 1) + 1; }
 

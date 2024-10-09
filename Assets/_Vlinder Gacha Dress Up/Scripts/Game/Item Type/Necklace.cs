@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class Necklace : ItemType
+public class Necklace : ItemTypeButton
 {
-    public Sprite chooseItem;
-
     protected override void OnEnable()
     {
+        eItemType = EItemType.Necklace;
+        targetRenderer = Doll.Instance.necklace;
         base.OnEnable();
         canNullValue = true;
         canMultiValue = false;

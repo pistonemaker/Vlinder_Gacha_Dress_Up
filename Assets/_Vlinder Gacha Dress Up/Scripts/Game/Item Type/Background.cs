@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class Background : ItemType
+public class Background : ItemTypeButton
 {
-    public Sprite chooseItem;
-
     protected override void OnEnable()
     {
+        eItemType = EItemType.Background;
+        targetRenderer = Doll.Instance.background;
         base.OnEnable();
         canNullValue = false;
         canMultiValue = false;

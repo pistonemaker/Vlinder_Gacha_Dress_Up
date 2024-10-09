@@ -1,5 +1,6 @@
 ﻿using System;
 using Com.TheFallenGames.OSA.Core;
+using UnityEngine;
 
 namespace Com.TheFallenGames.OSA.DataHelpers
 {

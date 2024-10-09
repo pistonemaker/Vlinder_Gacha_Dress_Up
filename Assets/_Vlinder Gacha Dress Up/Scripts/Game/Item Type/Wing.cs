@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class Wing : ItemType
+public class Wing : ItemTypeButton
 {
-    public Sprite chooseItem;
-
     protected override void OnEnable()
     {
+        eItemType = EItemType.Wing;
+        targetRenderer = Doll.Instance.wing;
         base.OnEnable();
         canNullValue = true;
         canMultiValue = false;

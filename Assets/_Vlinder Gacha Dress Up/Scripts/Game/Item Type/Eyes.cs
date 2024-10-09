@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class Eyes : ItemType
+public class Eyes : ItemTypeButton
 {
-    public Sprite chooseItem;
-
     protected override void OnEnable()
     {
+        eItemType = EItemType.Eyes;
+        targetRenderer = Doll.Instance.eyes;
         base.OnEnable();
         canNullValue = true;
         canMultiValue = false;

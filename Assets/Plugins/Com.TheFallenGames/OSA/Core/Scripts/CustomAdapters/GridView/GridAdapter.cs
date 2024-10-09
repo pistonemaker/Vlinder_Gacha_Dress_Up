@@ -338,15 +338,16 @@ namespace Com.TheFallenGames.OSA.CustomAdapters.GridView
 		protected override CellGroupViewsHolder<TCellVH> CreateViewsHolder(int itemIndex)
         {
             var instance = GetNewCellGroupViewsHolder();
-            instance.Init(_Params.GetGroupPrefab(itemIndex).gameObject, _Params.Content, itemIndex, _Params.Grid.CellPrefab, _Params.CurrentUsedNumCellsPerGroup);
+            instance.Init(_Params.GetGroupPrefab(itemIndex).gameObject, _Params.Content, 
+	            itemIndex, _Params.Grid.CellPrefab, _Params.CurrentUsedNumCellsPerGroup);
 
 			for (int i = 0; i < instance.ContainingCellViewsHolders.Length; i++)
 			{
 				var cellVH = instance.ContainingCellViewsHolders[i];
 				OnCellViewsHolderCreated(cellVH, instance);
 			}
+			
 			ConfigureCellsLayoutForGroup(instance);
-
 			return instance;
         }
 
