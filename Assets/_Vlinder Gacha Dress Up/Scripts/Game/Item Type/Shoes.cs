@@ -8,7 +8,8 @@ public class Shoes : ItemTypeButton
         targetRenderer = Doll.Instance.shoes;
         base.OnEnable();
         canNullValue = true;
-        canMultiValue = false;
+        canChangeRGB = false;
+        canChangeBSH = false;
     }
         
     protected override void ShowItemGrid()

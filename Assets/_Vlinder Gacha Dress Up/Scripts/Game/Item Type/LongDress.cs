@@ -8,7 +8,8 @@ public class LongDress : ItemTypeButton
         targetRenderer = Doll.Instance.longDress;
         base.OnEnable();
         canNullValue = true;
-        canMultiValue = false;
+        canChangeRGB = false;
+        canChangeBSH = true;
     }
         
     protected override void ShowItemGrid()

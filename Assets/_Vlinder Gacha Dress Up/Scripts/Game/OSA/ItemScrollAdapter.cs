@@ -80,6 +80,6 @@ public class MyCellViewsHolder : CellViewsHolder
         itemButton.data = data;
         itemButton.thumb.sprite = data.thumbSprite;
         itemButton.index = ItemIndex;
-        itemButton.CheckIfSelected();
+        itemButton.CheckIfSelected(null);
     }
 }

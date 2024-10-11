@@ -8,6 +8,7 @@ public class HandBag : ItemTypeButton
         targetRenderer = Doll.Instance.handBag;
         base.OnEnable();
         canNullValue = true;
-        canMultiValue = false;
+        canChangeRGB = false;
+        canChangeBSH = false;
     }
 }

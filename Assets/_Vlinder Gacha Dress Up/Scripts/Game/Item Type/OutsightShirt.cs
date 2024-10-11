@@ -8,6 +8,7 @@ public class OutsightShirt : ItemTypeButton
         targetRenderer = Doll.Instance.outsightShirt;
         base.OnEnable();
         canNullValue = true;
-        canMultiValue = false;
+        canChangeRGB = false;
+        canChangeBSH = true;
     }
 }

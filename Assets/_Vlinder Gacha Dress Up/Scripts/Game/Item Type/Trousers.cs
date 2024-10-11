@@ -8,6 +8,7 @@ public class Trousers : ItemTypeButton
         targetRenderer = Doll.Instance.trousers;
         base.OnEnable();
         canNullValue = true;
-        canMultiValue = false;
+        canChangeRGB = false;
+        canChangeBSH = true;
     }
 }

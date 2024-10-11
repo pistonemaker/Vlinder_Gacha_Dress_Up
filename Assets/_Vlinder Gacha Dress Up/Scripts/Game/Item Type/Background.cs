@@ -8,6 +8,7 @@ public class Background : ItemTypeButton
         targetRenderer = Doll.Instance.background;
         base.OnEnable();
         canNullValue = false;
-        canMultiValue = false;
+        canChangeRGB = false;
+        canChangeBSH = false;
     }
 }

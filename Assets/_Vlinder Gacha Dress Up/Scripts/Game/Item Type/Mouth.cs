@@ -8,6 +8,7 @@ public class Mouth : ItemTypeButton
         targetRenderer = Doll.Instance.mouth;
         base.OnEnable();
         canNullValue = true;
-        canMultiValue = false;
+        canChangeRGB = false;
+        canChangeBSH = false;
     }
 }

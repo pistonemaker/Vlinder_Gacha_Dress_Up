@@ -8,6 +8,7 @@ public class InsightShirt : ItemTypeButton
         targetRenderer = Doll.Instance.insightShirt;
         base.OnEnable();
         canNullValue = true;
-        canMultiValue = false;
+        canChangeRGB = false;
+        canChangeBSH = true;
     }
 }

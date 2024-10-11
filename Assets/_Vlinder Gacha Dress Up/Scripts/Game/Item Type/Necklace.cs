@@ -8,6 +8,7 @@ public class Necklace : ItemTypeButton
         targetRenderer = Doll.Instance.necklace;
         base.OnEnable();
         canNullValue = true;
-        canMultiValue = false;
+        canChangeRGB = false;
+        canChangeBSH = false;
     }
 }

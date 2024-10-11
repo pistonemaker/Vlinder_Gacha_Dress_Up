@@ -8,6 +8,7 @@ public class Eyes : ItemTypeButton
         targetRenderer = Doll.Instance.eyes;
         base.OnEnable();
         canNullValue = true;
-        canMultiValue = false;
+        canChangeRGB = false;
+        canChangeBSH = false;
     }
 }

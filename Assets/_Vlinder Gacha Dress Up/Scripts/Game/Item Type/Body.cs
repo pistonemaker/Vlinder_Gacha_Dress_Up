@@ -8,7 +8,8 @@ public class Body : ItemTypeButton
         targetRenderer = Doll.Instance.body;
         base.OnEnable();
         canNullValue = false;
-        canMultiValue = false;
+        canChangeRGB = false;
+        canChangeBSH = false;
         Choose();
     }
 }

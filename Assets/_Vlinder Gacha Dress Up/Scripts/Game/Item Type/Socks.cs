@@ -8,6 +8,7 @@ public class Socks : ItemTypeButton
         targetRenderer = Doll.Instance.socks;
         base.OnEnable();
         canNullValue = true;
-        canMultiValue = false;
+        canChangeRGB = false;
+        canChangeBSH = false;
     }
 }

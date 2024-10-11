@@ -8,6 +8,17 @@ public class FrontHair : ItemTypeButton
         targetRenderer = Doll.Instance.frontHair;
         base.OnEnable();
         canNullValue = true;
-        canMultiValue = false;
+        canChangeRGB = true;
+        canChangeBSH = false;
+    }
+
+    public override void WearItem(ItemData itemData)
+    {
+        base.WearItem(itemData);
+        
+        if (ItemBarManager.Instance.isApplyColor)
+        {
+            targetRenderer.color = ItemBarManager.Instance.currentColor;
+        }
     }
 }

@@ -8,6 +8,7 @@ public class Hat : ItemTypeButton
         targetRenderer = Doll.Instance.hat;
         base.OnEnable();
         canNullValue = true;
-        canMultiValue = false;
+        canChangeRGB = false;
+        canChangeBSH = false;
     }
 }

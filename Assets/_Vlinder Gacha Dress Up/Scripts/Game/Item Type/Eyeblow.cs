@@ -8,6 +8,7 @@ public class Eyeblow : ItemTypeButton
         targetRenderer = Doll.Instance.eyeblow;
         base.OnEnable();
         canNullValue = true;
-        canMultiValue = false;
+        canChangeRGB = false;
+        canChangeBSH = false;
     }
 }

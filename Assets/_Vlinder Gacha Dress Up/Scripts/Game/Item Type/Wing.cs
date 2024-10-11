@@ -8,6 +8,7 @@ public class Wing : ItemTypeButton
         targetRenderer = Doll.Instance.wing;
         base.OnEnable();
         canNullValue = true;
-        canMultiValue = false;
+        canChangeRGB = false;
+        canChangeBSH = false;
     }
 }
