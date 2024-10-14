@@ -9,6 +9,12 @@ public class ChooseBSHPanel : BasePanel
     public Button resetButton;
     public SpriteRenderer editRenderer;
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        LoadRenderer();
+    }
+
     protected override void LoadButtonAndImage()
     {
         brightnessSlider = transform.Find("BSH Bar").Find("B Bar").Find("Slider").GetComponent<Slider>();
@@ -22,7 +28,7 @@ public class ChooseBSHPanel : BasePanel
         brightnessSlider.onValueChanged.AddListener(_ => ChangeColorValue());
         saturationSlider.onValueChanged.AddListener(_ => ChangeColorValue());
         hueSlider.onValueChanged.AddListener(_ => ChangeColorValue());
-        resetButton.onClick.AddListener(() => { editRenderer.color = Color.white;});
+        resetButton.onClick.AddListener(ResetValue);
     }
 
     private void OnDisable()
@@ -33,74 +39,31 @@ public class ChooseBSHPanel : BasePanel
         resetButton.onClick.RemoveAllListeners();
     }
 
-    public Color HSBToRGB(float hue, float saturation, float brightness)
+    private void LoadRenderer()
     {
-        float r = 0, g = 0, b = 0;
-    
-        if (saturation == 0) 
-        {
-            // Màu xám
-            r = g = b = brightness;
-        }
-        else
-        {
-            float sectorPos = hue / 60.0f; // Chia hue thành 6 phần (360/60)
-            int sectorNumber = Mathf.FloorToInt(sectorPos);
-            float fractionalSector = sectorPos - sectorNumber;
-
-            float p = brightness * (1 - saturation);
-            float q = brightness * (1 - (saturation * fractionalSector));
-            float t = brightness * (1 - (saturation * (1 - fractionalSector)));
-
-            switch (sectorNumber)
-            {
-                case 0:
-                    r = brightness;
-                    g = t;
-                    b = p;
-                    break;
-                case 1:
-                    r = q;
-                    g = brightness;
-                    b = p;
-                    break;
-                case 2:
-                    r = p;
-                    g = brightness;
-                    b = t;
-                    break;
-                case 3:
-                    r = p;
-                    g = q;
-                    b = brightness;
-                    break;
-                case 4:
-                    r = t;
-                    g = p;
-                    b = brightness;
-                    break;
-                case 5:
-                    r = brightness;
-                    g = p;
-                    b = q;
-                    break;
-            }
-        }
-
-        return new Color(r, g, b, 1); 
+        editRenderer = ItemBarManager.Instance.currentItemTypeButton.GetRenderer();
+        brightnessSlider.value = 1;
+        saturationSlider.value = 1;
+        hueSlider.value = 1;
+        ChangeColorValue();
     }
     
     public void ChangeColorValue()
     {
-        float hue = hueSlider.value * 360f; 
+        float hue = hueSlider.value; 
         float saturation = saturationSlider.value;
         float brightness = brightnessSlider.value; 
 
-        Color color = HSBToRGB(hue, saturation, brightness);
+        Color color = Color.HSVToRGB(hue, saturation, brightness);
 
         if (editRenderer != null)
         {
             editRenderer.color = color;
         }
+    }
+
+    private void ResetValue()
+    {
+        editRenderer.color = Color.white;
     }
 }

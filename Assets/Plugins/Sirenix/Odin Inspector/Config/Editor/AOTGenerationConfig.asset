@@ -16,74 +16,8 @@ MonoBehaviour:
   deleteDllAfterBuilds: 1
   AutomateForAllAOTPlatforms: 1
   automateForPlatforms: 0900000014000000
-  lastScan: 637828878778056753
+  lastScan: 638642915249663739
   supportSerializedTypes:
   - TypeName: UnityEngine.AudioClip, UnityEngine.AudioModule
-    IsCustom: 0
-    Emit: 1
-  - TypeName: System.Boolean, mscorlib
-    IsCustom: 0
-    Emit: 1
-  - TypeName: System.Collections.Generic.Dictionary`2[[GiftType, Assembly-CSharp],[System.Int32,
-      mscorlib]], mscorlib
-    IsCustom: 0
-    Emit: 1
-  - TypeName: System.Collections.Generic.Dictionary`2[[NameMusic, Assembly-CSharp],[MusicData,
-      Assembly-CSharp]], mscorlib
-    IsCustom: 0
-    Emit: 1
-  - TypeName: System.Collections.Generic.EnumEqualityComparer`1[[GiftType, Assembly-CSharp]],
-      mscorlib
-    IsCustom: 0
-    Emit: 1
-  - TypeName: System.Collections.Generic.EnumEqualityComparer`1[[NameMusic, Assembly-CSharp]],
-      mscorlib
-    IsCustom: 0
-    Emit: 1
-  - TypeName: System.Single, mscorlib
-    IsCustom: 0
-    Emit: 1
-  - TypeName: GiftType, Assembly-CSharp
-    IsCustom: 0
-    Emit: 1
-  - TypeName: IAPPack, Assembly-CSharp
-    IsCustom: 0
-    Emit: 1
-  - TypeName: System.Collections.Generic.IEqualityComparer`1[[GiftType, Assembly-CSharp]],
-      mscorlib
-    IsCustom: 0
-    Emit: 1
-  - TypeName: System.Collections.Generic.IEqualityComparer`1[[NameMusic, Assembly-CSharp]],
-      mscorlib
-    IsCustom: 0
-    Emit: 1
-  - TypeName: System.Int32, mscorlib
-    IsCustom: 0
-    Emit: 1
-  - TypeName: System.Collections.Generic.List`1[[IAPPack, Assembly-CSharp]], mscorlib
-    IsCustom: 0
-    Emit: 1
-  - TypeName: MusicData, Assembly-CSharp
-    IsCustom: 0
-    Emit: 1
-  - TypeName: NameMusic, Assembly-CSharp
-    IsCustom: 0
-    Emit: 1
-  - TypeName: System.Object, mscorlib
-    IsCustom: 0
-    Emit: 1
-  - TypeName: UnityEngine.Purchasing.ProductType, UnityEngine.Purchasing
-    IsCustom: 0
-    Emit: 1
-  - TypeName: UnityEngine.Sprite, UnityEngine.CoreModule
-    IsCustom: 0
-    Emit: 1
-  - TypeName: System.String, mscorlib
-    IsCustom: 0
-    Emit: 1
-  - TypeName: TypeBuy, Assembly-CSharp
-    IsCustom: 0
-    Emit: 1
-  - TypeName: TypePackIAP, Assembly-CSharp
-    IsCustom: 0
+    IsCustom: 1
     Emit: 1

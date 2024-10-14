@@ -42,7 +42,17 @@ public class ItemTypeButton : MonoBehaviour
         button.image.sprite = chooseSprite;
         ItemBarManager.Instance.currentItemTypeButton = this;
         ItemBarManager.Instance.chooseColorPanel.gameObject.SetActive(false);
-        ItemBarManager.Instance.chooseBSHPanel.gameObject.SetActive(false);
+        UIManager.Instance.saveButton.gameObject.SetActive(true);
+        UIManager.Instance.takeOffButton.gameObject.SetActive(true);
+
+        if (canChangeBSH)
+        {
+            //ItemBarManager.Instance.chooseBSHPanel.gameObject.SetActive(true);
+        }
+        else
+        {
+            //ItemBarManager.Instance.chooseBSHPanel.gameObject.SetActive(false);
+        }
     }
 
     public void UnChoose()
@@ -53,6 +63,11 @@ public class ItemTypeButton : MonoBehaviour
     protected virtual void ShowItemGrid()
     {
         ItemBarManager.Instance.LoadOSA(eItemType);
+    }
+
+    public SpriteRenderer GetRenderer()
+    {
+        return targetRenderer;
     }
 
     public virtual void WearItem(ItemData itemData)

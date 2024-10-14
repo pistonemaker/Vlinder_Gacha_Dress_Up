@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Doll : Singleton<Doll>
 {
+    public DollSave saveDoll;
     public List<SpriteRenderer> spriteRenderers;
     public SpriteRenderer background;
     public SpriteRenderer behindHair;
@@ -35,7 +36,9 @@ public class Doll : Singleton<Doll>
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>().ToList();
         GetSpriteRenderers();
         spriteRenderers.Remove(body);
+        spriteRenderers.Remove(background);
         LoadSaveItems();
+        TakeOffDoll();
     }
 
     private void GetSpriteRenderers()
@@ -83,6 +86,8 @@ public class Doll : Singleton<Doll>
 
     private void WearSaveItem(EItemType eItemType, int itemIndex)
     {
+        // Debug.Log(eItemType + "\t" + itemIndex);
+        PlayerPrefs.SetInt(Changer.GetDataKey(eItemType), itemIndex);
         if (itemIndex == -1)
         {
             return;
@@ -98,29 +103,29 @@ public class Doll : Singleton<Doll>
 
     private void LoadSaveItems()
     {
-        WearSaveItem(EItemType.Body, PlayerPrefs.GetInt(DataKey.ID_Body));
-        WearSaveItem(EItemType.Background, PlayerPrefs.GetInt(DataKey.ID_Background));
-        WearSaveItem(EItemType.Birthmark, PlayerPrefs.GetInt(DataKey.ID_Birthmark));
-        WearSaveItem(EItemType.Eyeblow, PlayerPrefs.GetInt(DataKey.ID_Eyeblow));
-        WearSaveItem(EItemType.Eyes, PlayerPrefs.GetInt(DataKey.ID_Eyes));
-        WearSaveItem(EItemType.Earrings, PlayerPrefs.GetInt(DataKey.ID_Earrings));
-        WearSaveItem(EItemType.Blush, PlayerPrefs.GetInt(DataKey.ID_Blush));
-        WearSaveItem(EItemType.Glass, PlayerPrefs.GetInt(DataKey.ID_Glass));
-        WearSaveItem(EItemType.Mouth, PlayerPrefs.GetInt(DataKey.ID_Mouth));
-        WearSaveItem(EItemType.Necklace, PlayerPrefs.GetInt(DataKey.ID_Neckless));
-        WearSaveItem(EItemType.Shoes, PlayerPrefs.GetInt(DataKey.ID_Shoes));
-        WearSaveItem(EItemType.Socks, PlayerPrefs.GetInt(DataKey.ID_Socks));
-        WearSaveItem(EItemType.Trouser, PlayerPrefs.GetInt(DataKey.ID_Trousers));
-        WearSaveItem(EItemType.Wing, PlayerPrefs.GetInt(DataKey.ID_Wing));
-        WearSaveItem(EItemType.Behind_Hair, PlayerPrefs.GetInt(DataKey.ID_Behind_Hair));
-        WearSaveItem(EItemType.Front_Hair, PlayerPrefs.GetInt(DataKey.ID_Front_Hair));
-        WearSaveItem(EItemType.Short_Dress, PlayerPrefs.GetInt(DataKey.ID_Short_Dress));
-        WearSaveItem(EItemType.Long_Dress, PlayerPrefs.GetInt(DataKey.ID_Long_Dress));
-        WearSaveItem(EItemType.Normal_Hat, PlayerPrefs.GetInt(DataKey.ID_Hat));
-        WearSaveItem(EItemType.Nose, PlayerPrefs.GetInt(DataKey.ID_Nose));
-        WearSaveItem(EItemType.Hand_Bag, PlayerPrefs.GetInt(DataKey.ID_Hand_Bag));
-        WearSaveItem(EItemType.Insight_Shirt, PlayerPrefs.GetInt(DataKey.ID_Insight_Shirt));
-        WearSaveItem(EItemType.Outsight_Shirt, PlayerPrefs.GetInt(DataKey.ID_Outsight_Shirt));
+        WearSaveItem(EItemType.Birthmark, -1);
+        WearSaveItem(EItemType.Earrings, -1);
+        WearSaveItem(EItemType.Blush, -1);
+        WearSaveItem(EItemType.Glass, -1);
+        WearSaveItem(EItemType.Nose, -1);
+        WearSaveItem(EItemType.Background, 0);
+        WearSaveItem(EItemType.Body, 0);
+        WearSaveItem(EItemType.Eyeblow, 0);
+        WearSaveItem(EItemType.Eyes, 0);
+        WearSaveItem(EItemType.Mouth, 0);
+        WearSaveItem(EItemType.Necklace, 0);
+        WearSaveItem(EItemType.Shoes, 0);
+        WearSaveItem(EItemType.Socks, 0);
+        WearSaveItem(EItemType.Trouser, 0);
+        WearSaveItem(EItemType.Wing, 0);
+        WearSaveItem(EItemType.Behind_Hair, 0);
+        WearSaveItem(EItemType.Front_Hair, 0);
+        WearSaveItem(EItemType.Short_Dress, 0);
+        WearSaveItem(EItemType.Long_Dress, 0);
+        WearSaveItem(EItemType.Normal_Hat, 0);
+        WearSaveItem(EItemType.Hand_Bag, 0);
+        WearSaveItem(EItemType.Insight_Shirt, 0);
+        WearSaveItem(EItemType.Outsight_Shirt, 0);
     }
 
     private SpriteRenderer FindSuitableRenderer(EItemType eItemType)
@@ -176,5 +181,33 @@ public class Doll : Singleton<Doll>
             default:
                 return null;
         }
+    }
+
+    public void SaveDoll()
+    {
+        saveDoll.background.sprite = background.sprite;
+        saveDoll.behindHair.sprite = behindHair.sprite;
+        saveDoll.wing.sprite = wing.sprite;
+        saveDoll.body.sprite = body.sprite;
+        saveDoll.socks.sprite = socks.sprite;
+        saveDoll.shoes.sprite = shoes.sprite;
+        saveDoll.trousers.sprite = trousers.sprite;
+        saveDoll.shortDress.sprite = shortDress.sprite;
+        saveDoll.eyes.sprite = eyes.sprite;
+        saveDoll.eyeblow.sprite = eyeblow.sprite;
+        saveDoll.mouth.sprite = mouth.sprite;
+        saveDoll.insightShirt.sprite = insightShirt.sprite;
+        saveDoll.birthmark.sprite = birthmark.sprite;
+        saveDoll.earrings.sprite = earrings.sprite;
+        saveDoll.nose.sprite = nose.sprite;
+        saveDoll.glass.sprite = glass.sprite;
+        saveDoll.blush.sprite = blush.sprite;
+        saveDoll.outsightShirt.sprite = outsightShirt.sprite;
+        saveDoll.longDress.sprite = longDress.sprite;
+        saveDoll.frontHair.sprite = frontHair.sprite;
+        saveDoll.hairLight.sprite = hairLight.sprite;
+        saveDoll.hat.sprite = hat.sprite;
+        saveDoll.necklace.sprite = necklace.sprite;
+        saveDoll.handBag.sprite = handBag.sprite;
     }
 }

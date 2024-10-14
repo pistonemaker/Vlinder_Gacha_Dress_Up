@@ -1,17 +1,15 @@
 using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine;
 using System.IO;
+using UnityEngine;
 
 public class DataLoader : Singleton<DataLoader>
 {
-    public GameData gameData;
+    public GameData gameData; // ScriptableObject chứa data
     public List<Sprite> sprites;
 
     protected override void Awake()
     {
         base.Awake();
-        //gameData.data.Clear();
         GetSpriteData();
         LoadData();
     }
@@ -22,16 +20,15 @@ public class DataLoader : Singleton<DataLoader>
         {
             return;
         }
-        
-        string folderPath = "Assets/_Vlinder Gacha Dress Up/Sprites/Item";
-        string[] filePaths = Directory.GetFiles(folderPath);
 
-        foreach (string filePath in filePaths)
+        // Load tất cả các sprite từ thư mục Resources/Item
+        Sprite[] loadedSprites = Resources.LoadAll<Sprite>("Item");
+
+        foreach (Sprite sprite in loadedSprites)
         {
-            Sprite texture = AssetDatabase.LoadAssetAtPath<Sprite>(filePath);
-            if (texture != null)
+            if (sprite != null)
             {
-                sprites.Add(texture);
+                sprites.Add(sprite);
             }
         }
     }
@@ -42,32 +39,35 @@ public class DataLoader : Singleton<DataLoader>
         {
             return;
         }
-        
-        string folderPath = "Assets/_Vlinder Gacha Dress Up/Sprites/UI Thumb";
-        string[] subDirectories = Directory.GetDirectories(folderPath, "*", SearchOption.AllDirectories);
 
-        foreach (string subDir in subDirectories)
+        string[] itemFolders = { "_Background", "_Behind Hair", "_Body", "_Eyeblow", "_Eyes", 
+            "_Earrings", "_Birthmark", "_Glass", "_Nose", "_Blush", "_Front Hair", "_Hand Bag", 
+            "_Hat", "_Insight Shirt", "_Long Dress", "_Mouth", "_Necklace", "_Outsight Shirt", 
+            "_Shoes", "_Short Dress", "_Socks", "_Trousers", "_Wing" };
+        
+        foreach (string folderName in itemFolders)
         {
-            string[] spritePaths = Directory.GetFiles(subDir, "*.png", SearchOption.TopDirectoryOnly);
+            // Load tất cả các sprite từ từng thư mục con trong Resources/UI Thumb
+            Sprite[] spritesInFolder = Resources.LoadAll<Sprite>($"UI Thumb/{folderName}");
 
             int index = 0;
-            foreach (string spritePath in spritePaths)
+            foreach (Sprite sprite in spritesInFolder)
             {
-                Sprite sprite = AssetDatabase.LoadAssetAtPath<Sprite>(spritePath);
-                
                 if (sprite != null)
                 {
                     ItemData itemData = new ItemData();
                     FindSuitableSprites(sprite, itemData);
-                    EItemType eItemType = GetEItemType(subDir);
+
+                    EItemType eItemType = GetEItemType(folderName);
+
                     itemData.itemtype = eItemType;
                     itemData.id = index++;
-                    
+
                     if (!gameData.data.ContainsKey(eItemType))
                     {
                         gameData.data.Add(eItemType, new ItemTypeData());
                     }
-                    
+
                     gameData.data[eItemType].itemdatas.Add(itemData);
                 }
             }
@@ -169,7 +169,7 @@ public class DataLoader : Singleton<DataLoader>
 
     private void Reset()
     {
-        gameData = GameManager.Instance.gameData;
+        LoadData();
         GetSpriteData();
     }
 }
