@@ -10,5 +10,6 @@ public class ShortDress : ItemTypeButton
         canNullValue = true;
         canChangeRGB = false;
         canChangeBSH = true;
+        dollComponentData = ItemBarManager.Instance.dollSaveData.shortDress;
     }
 }

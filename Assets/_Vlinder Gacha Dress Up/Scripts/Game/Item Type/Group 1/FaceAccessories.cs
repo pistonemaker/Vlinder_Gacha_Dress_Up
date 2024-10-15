@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class FaceAccessories : ItemTypeButton
@@ -56,5 +55,39 @@ public class FaceAccessories : ItemTypeButton
         Doll.Instance.earrings.sprite = null;
         Doll.Instance.glass.sprite = null;
         Doll.Instance.blush.sprite = null;
+    }
+
+    public override void SaveData()
+    {
+        var dollSaveData = ItemBarManager.Instance.dollSaveData;
+        var component = ItemBarManager.Instance.dollSaveData.birthmark;
+        component.sprite = Doll.Instance.birthmark.sprite;
+        component.eItemType = EItemType.Birthmark;
+        component.id = PlayerPrefs.GetInt(DataKey.ID_Birthmark);
+        dollSaveData.birthmark = component;
+        
+        component = ItemBarManager.Instance.dollSaveData.nose;
+        component.sprite = Doll.Instance.nose.sprite;
+        component.eItemType = EItemType.Nose;
+        component.id = PlayerPrefs.GetInt(DataKey.ID_Nose);
+        dollSaveData.nose = component;
+        
+        component = ItemBarManager.Instance.dollSaveData.earrings;
+        component.sprite = Doll.Instance.earrings.sprite;
+        component.eItemType = EItemType.Earrings;
+        component.id = PlayerPrefs.GetInt(DataKey.ID_Earrings);
+        dollSaveData.earrings = component;
+        
+        component = ItemBarManager.Instance.dollSaveData.glass;
+        component.sprite = Doll.Instance.glass.sprite;
+        component.eItemType = EItemType.Glass;
+        component.id = PlayerPrefs.GetInt(DataKey.ID_Glass);
+        dollSaveData.glass = component;
+        
+        component = ItemBarManager.Instance.dollSaveData.blush;
+        component.sprite = Doll.Instance.blush.sprite;
+        component.eItemType = EItemType.Blush;
+        component.id = PlayerPrefs.GetInt(DataKey.ID_Blush);
+        dollSaveData.blush = component;
     }
 }

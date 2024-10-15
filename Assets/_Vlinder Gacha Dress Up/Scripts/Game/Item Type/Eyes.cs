@@ -10,5 +10,6 @@ public class Eyes : ItemTypeButton
         canNullValue = true;
         canChangeRGB = false;
         canChangeBSH = false;
+        dollComponentData = ItemBarManager.Instance.dollSaveData.eyes;
     }
 }

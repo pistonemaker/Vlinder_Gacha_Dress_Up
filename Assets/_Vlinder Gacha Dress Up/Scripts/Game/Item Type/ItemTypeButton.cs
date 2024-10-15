@@ -13,6 +13,7 @@ public class ItemTypeButton : MonoBehaviour
     public Sprite sprite;
     public Sprite chooseSprite;
     protected Button button;
+    protected DollComponentData dollComponentData;
 
     protected virtual void OnEnable()
     {
@@ -151,6 +152,13 @@ public class ItemTypeButton : MonoBehaviour
         {
             targetRenderer.color = Color.white;
         }
+    }
+
+    public virtual void SaveData()
+    {
+        dollComponentData.id = curItemData.id;
+        dollComponentData.eItemType = eItemType;
+        dollComponentData.sprite = chooseItemSprite;
     }
 
     protected string ChangeItemTypeToData(EItemType itemType)

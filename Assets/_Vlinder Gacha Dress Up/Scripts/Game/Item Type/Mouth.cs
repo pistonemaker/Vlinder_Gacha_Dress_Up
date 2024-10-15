@@ -10,5 +10,6 @@ public class Mouth : ItemTypeButton
         canNullValue = true;
         canChangeRGB = false;
         canChangeBSH = false;
+        dollComponentData = ItemBarManager.Instance.dollSaveData.mouth;
     }
 }

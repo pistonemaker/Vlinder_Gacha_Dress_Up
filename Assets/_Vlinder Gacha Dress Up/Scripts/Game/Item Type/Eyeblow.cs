@@ -10,5 +10,6 @@ public class Eyeblow : ItemTypeButton
         canNullValue = true;
         canChangeRGB = false;
         canChangeBSH = false;
+        dollComponentData = ItemBarManager.Instance.dollSaveData.eyeblow;
     }
 }

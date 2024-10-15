@@ -10,6 +10,7 @@ public class Shoes : ItemTypeButton
         canNullValue = true;
         canChangeRGB = false;
         canChangeBSH = false;
+        dollComponentData = ItemBarManager.Instance.dollSaveData.shoes;
     }
         
     protected override void ShowItemGrid()

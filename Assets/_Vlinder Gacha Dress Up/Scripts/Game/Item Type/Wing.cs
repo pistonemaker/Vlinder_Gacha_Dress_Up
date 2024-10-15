@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class Wing : ItemTypeButton
 {
     protected override void OnEnable()
@@ -10,5 +8,6 @@ public class Wing : ItemTypeButton
         canNullValue = true;
         canChangeRGB = false;
         canChangeBSH = false;
+        dollComponentData = ItemBarManager.Instance.dollSaveData.wing;
     }
 }

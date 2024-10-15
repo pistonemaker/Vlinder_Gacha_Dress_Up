@@ -10,6 +10,7 @@ public class LongDress : ItemTypeButton
         canNullValue = true;
         canChangeRGB = false;
         canChangeBSH = true;
+        dollComponentData = ItemBarManager.Instance.dollSaveData.longDress;
     }
         
     protected override void ShowItemGrid()

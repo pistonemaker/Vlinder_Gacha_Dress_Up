@@ -10,5 +10,6 @@ public class Trousers : ItemTypeButton
         canNullValue = true;
         canChangeRGB = false;
         canChangeBSH = true;
+        dollComponentData = ItemBarManager.Instance.dollSaveData.trousers;
     }
 }

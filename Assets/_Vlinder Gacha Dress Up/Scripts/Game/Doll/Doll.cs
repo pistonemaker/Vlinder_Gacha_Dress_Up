@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Doll : Singleton<Doll>
 {
-    public DollSave saveDoll;
     public List<SpriteRenderer> spriteRenderers;
     public SpriteRenderer background;
     public SpriteRenderer behindHair;
@@ -39,6 +38,7 @@ public class Doll : Singleton<Doll>
         spriteRenderers.Remove(background);
         LoadSaveItems();
         TakeOffDoll();
+        CheckIfEditDoll();
     }
 
     private void GetSpriteRenderers()
@@ -82,6 +82,7 @@ public class Doll : Singleton<Doll>
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>().ToList();
         GetSpriteRenderers();
         spriteRenderers.Remove(body);
+        spriteRenderers.Remove(background);
     }
 
     private void WearSaveItem(EItemType eItemType, int itemIndex)
@@ -126,6 +127,46 @@ public class Doll : Singleton<Doll>
         WearSaveItem(EItemType.Hand_Bag, 0);
         WearSaveItem(EItemType.Insight_Shirt, 0);
         WearSaveItem(EItemType.Outsight_Shirt, 0);
+    }
+
+    private void CheckIfEditDoll()
+    {
+        var saveData = GameManager.Instance.saveData;
+        
+        if (saveData.isEdit && saveData.editID != -1)
+        {
+            LoadDoll(saveData.saveDataList[saveData.editID]);
+            saveData.isEdit = false;
+            saveData.editID = -1;
+        }
+    }
+
+    private void LoadDoll(DollSaveData dollSaveData)
+    {
+        background.sprite = dollSaveData.background.sprite;
+        background.size = new Vector2(15f, 30f);
+        behindHair.sprite = dollSaveData.behindHair.sprite;
+        wing.sprite = dollSaveData.wing.sprite;
+        body.sprite = dollSaveData.body.sprite;
+        socks.sprite = dollSaveData.socks.sprite;
+        shoes.sprite = dollSaveData.shoes.sprite;
+        trousers.sprite = dollSaveData.trousers.sprite;
+        shortDress.sprite = dollSaveData.shortDress.sprite;
+        eyes.sprite = dollSaveData.eyes.sprite;
+        eyeblow.sprite = dollSaveData.eyeblow.sprite;
+        mouth.sprite = dollSaveData.mouth.sprite;
+        insightShirt.sprite = dollSaveData.insightShirt.sprite;
+        birthmark.sprite = dollSaveData.birthmark.sprite;
+        earrings.sprite = dollSaveData.earrings.sprite;
+        nose.sprite = dollSaveData.nose.sprite;
+        glass.sprite = dollSaveData.glass.sprite;
+        blush.sprite = dollSaveData.blush.sprite;
+        outsightShirt.sprite = dollSaveData.outsightShirt.sprite;
+        longDress.sprite = dollSaveData.longDress.sprite;
+        frontHair.sprite = dollSaveData.frontHair.sprite;
+        hat.sprite = dollSaveData.hat.sprite;
+        necklace.sprite = dollSaveData.necklace.sprite;
+        handBag.sprite = dollSaveData.handBag.sprite;
     }
 
     private SpriteRenderer FindSuitableRenderer(EItemType eItemType)
@@ -181,33 +222,5 @@ public class Doll : Singleton<Doll>
             default:
                 return null;
         }
-    }
-
-    public void SaveDoll()
-    {
-        saveDoll.background.sprite = background.sprite;
-        saveDoll.behindHair.sprite = behindHair.sprite;
-        saveDoll.wing.sprite = wing.sprite;
-        saveDoll.body.sprite = body.sprite;
-        saveDoll.socks.sprite = socks.sprite;
-        saveDoll.shoes.sprite = shoes.sprite;
-        saveDoll.trousers.sprite = trousers.sprite;
-        saveDoll.shortDress.sprite = shortDress.sprite;
-        saveDoll.eyes.sprite = eyes.sprite;
-        saveDoll.eyeblow.sprite = eyeblow.sprite;
-        saveDoll.mouth.sprite = mouth.sprite;
-        saveDoll.insightShirt.sprite = insightShirt.sprite;
-        saveDoll.birthmark.sprite = birthmark.sprite;
-        saveDoll.earrings.sprite = earrings.sprite;
-        saveDoll.nose.sprite = nose.sprite;
-        saveDoll.glass.sprite = glass.sprite;
-        saveDoll.blush.sprite = blush.sprite;
-        saveDoll.outsightShirt.sprite = outsightShirt.sprite;
-        saveDoll.longDress.sprite = longDress.sprite;
-        saveDoll.frontHair.sprite = frontHair.sprite;
-        saveDoll.hairLight.sprite = hairLight.sprite;
-        saveDoll.hat.sprite = hat.sprite;
-        saveDoll.necklace.sprite = necklace.sprite;
-        saveDoll.handBag.sprite = handBag.sprite;
     }
 }

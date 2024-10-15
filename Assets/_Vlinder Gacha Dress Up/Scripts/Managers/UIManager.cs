@@ -1,4 +1,3 @@
-using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManager : Singleton<UIManager>
@@ -7,12 +6,18 @@ public class UIManager : Singleton<UIManager>
     public Button takeOffButton;
     
     public TakeOffAllPopup takeOffAllPopup;
+    public SavePopup savePopup;
 
     private void OnEnable()
     {
         takeOffButton.onClick.AddListener(() =>
         {
             takeOffAllPopup.gameObject.SetActive(true);
+        });
+        
+        saveButton.onClick.AddListener(() =>
+        {
+            savePopup.gameObject.SetActive(true);
         });
     }
 

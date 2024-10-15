@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class OutsightShirt : ItemTypeButton
 {
     protected override void OnEnable()
@@ -10,5 +8,6 @@ public class OutsightShirt : ItemTypeButton
         canNullValue = true;
         canChangeRGB = false;
         canChangeBSH = true;
+        dollComponentData = ItemBarManager.Instance.dollSaveData.outsightShirt;
     }
 }

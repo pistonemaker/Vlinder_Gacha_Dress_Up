@@ -10,5 +10,6 @@ public class InsightShirt : ItemTypeButton
         canNullValue = true;
         canChangeRGB = false;
         canChangeBSH = true;
+        dollComponentData = ItemBarManager.Instance.dollSaveData.insightShirt;
     }
 }

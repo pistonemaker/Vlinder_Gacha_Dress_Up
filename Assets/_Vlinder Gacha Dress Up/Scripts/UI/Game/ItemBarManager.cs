@@ -16,6 +16,7 @@ public class ItemBarManager : Singleton<ItemBarManager>
     public ItemTypeButton frontHairButton;
     public ItemTypeButton behindHairButton;
     public List<ItemTypeButton> itemTypeButtons;
+    public DollSaveData dollSaveData;
     
     public bool isApplyColor;
     public Color currentColor;
@@ -27,6 +28,7 @@ public class ItemBarManager : Singleton<ItemBarManager>
         itemTypeButtons = GetComponentsInChildren<ItemTypeButton>().ToList();
         this.RegisterListener(EventID.On_Wear_Item, param => WearItem((ItemData)param));
 
+        EventDispatcher.Instance.RegisterListener(EventID.On_Save_Game, OnSaveGame);
         //chooseBSHPanel.gameObject.SetActive(false);
         chooseColorPanel.gameObject.SetActive(false);
         editColorPopup.gameObject.SetActive(false);
@@ -35,6 +37,7 @@ public class ItemBarManager : Singleton<ItemBarManager>
     private void OnDisable()
     {
         this.RemoveListener(EventID.On_Wear_Item, param => WearItem((ItemData)param));
+        EventDispatcher.Instance.RemoveListener(EventID.On_Save_Game, OnSaveGame);
     }
 
     public void ActiveItemButton(ItemTypeButton button)
@@ -87,5 +90,22 @@ public class ItemBarManager : Singleton<ItemBarManager>
         currentColor = Color.white;
         frontHairButton.ClearColor();
         behindHairButton.ClearColor();
+    }
+
+    public void OnSaveGame(object param)
+    {
+        for (int i = 0; i < itemTypeButtons.Count; i++)
+        {
+            itemTypeButtons[i].SaveData();
+        }
+        
+        GameManager.Instance.saveData.saveDataList.Add(dollSaveData);
+        int count = PlayerPrefs.GetInt(DataKey.Doll_Button);
+
+        if (GameManager.Instance.saveData.saveDataList.Count >= count)
+        {
+            count++;
+            PlayerPrefs.SetInt(DataKey.Doll_Button, count);
+        }
     }
 }

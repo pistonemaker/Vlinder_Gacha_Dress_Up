@@ -10,6 +10,7 @@ public class BehindHair : ItemTypeButton
         canNullValue = true;
         canChangeRGB = true;
         canChangeBSH = false;
+        dollComponentData = ItemBarManager.Instance.dollSaveData.behindHair;
     }
 
     public override void WearItem(ItemData itemData)

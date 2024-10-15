@@ -28,5 +28,8 @@ public static class DataKey
     public const string ID_Nose = "ID_Nose";
     public const string ID_Glass = "ID_Glass";
 
+    
+    public const string Doll_Button = "Doll_Button";
+    
     #endregion
 }

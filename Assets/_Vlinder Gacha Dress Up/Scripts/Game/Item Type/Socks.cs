@@ -10,5 +10,6 @@ public class Socks : ItemTypeButton
         canNullValue = true;
         canChangeRGB = false;
         canChangeBSH = false;
+        dollComponentData = ItemBarManager.Instance.dollSaveData.socks;
     }
 }

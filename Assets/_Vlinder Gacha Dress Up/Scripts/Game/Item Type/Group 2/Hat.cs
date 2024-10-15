@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class Hat : ItemTypeButton
 {
     protected override void OnEnable()
@@ -10,5 +8,6 @@ public class Hat : ItemTypeButton
         canNullValue = true;
         canChangeRGB = false;
         canChangeBSH = false;
+        dollComponentData = ItemBarManager.Instance.dollSaveData.hat;
     }
 }

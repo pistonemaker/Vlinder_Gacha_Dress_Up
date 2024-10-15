@@ -1,3 +1,4 @@
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SavePopup : BasePanel
@@ -13,7 +14,7 @@ public class SavePopup : BasePanel
 
     protected override void SetListener()
     {
-        noButton.onClick.AddListener(ClosePanel);
+        noButton.onClick.AddListener(LoadSaveScene);
         yesButton.onClick.AddListener(SaveDoll);
     }
 
@@ -23,9 +24,17 @@ public class SavePopup : BasePanel
         yesButton.onClick.RemoveAllListeners();
     }
 
+    private void LoadSaveScene()
+    {
+        ClosePanel();
+        SceneManager.LoadSceneAsync("Scenes/Save");
+    }
+
     private void SaveDoll()
     {
         ClosePanel();
+        EventDispatcher.Instance.PostEvent(EventID.On_Save_Game);
+        
+        SceneManager.LoadSceneAsync("Scenes/Save");
     }
 }
-    
