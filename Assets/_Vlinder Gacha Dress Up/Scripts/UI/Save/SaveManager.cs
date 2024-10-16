@@ -17,6 +17,7 @@ public class SaveManager : Singleton<SaveManager>
 
     private void OnEnable()
     {
+        Application.targetFrameRate = 60;
         LoadProperties();
         CreateDollButtons();    
         SetListeners();
