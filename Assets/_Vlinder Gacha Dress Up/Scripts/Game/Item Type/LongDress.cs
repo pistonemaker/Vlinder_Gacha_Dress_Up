@@ -17,4 +17,15 @@ public class LongDress : ItemTypeButton
     {
         ItemBarManager.Instance.LoadOSA(eItemType);
     }
+
+    public override void WearItem(ItemData itemData)
+    {
+        base.WearItem(itemData);
+
+        if (ItemBarManager.Instance.outsightShirtButton.GetCurSpriteRenderer().sprite != null)
+        {
+            ItemBarManager.Instance.outsightShirtButton.GetCurSpriteRenderer().sprite = null;
+            PlayerPrefs.SetInt(DataKey.ID_Outsight_Shirt, 0);
+        }
+    }
 }

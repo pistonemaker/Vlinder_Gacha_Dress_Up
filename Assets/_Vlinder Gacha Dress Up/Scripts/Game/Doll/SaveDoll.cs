@@ -77,6 +77,7 @@ public class SaveDoll : MonoBehaviour
         background.gameObject.SetActive(false);
         behindHair.sprite = data.behindHair.sprite;
         CheckIfNull(behindHair);
+        behindHair.color = data.hairColor;
         wing.sprite = data.wing.sprite;
         CheckIfNull(wing);
         body.sprite = data.body.sprite;
@@ -113,6 +114,7 @@ public class SaveDoll : MonoBehaviour
         CheckIfNull(longDress);
         frontHair.sprite = data.frontHair.sprite;
         CheckIfNull(frontHair);
+        frontHair.color = data.hairColor;
         hat.sprite = data.hat.sprite;
         CheckIfNull(hat);
         necklace.sprite = data.necklace.sprite;
@@ -146,8 +148,10 @@ public class SaveDoll : MonoBehaviour
     {
         background.sprite = sample.background.sprite;
         CheckIfNull(background);
+        background.gameObject.SetActive(false);
         behindHair.sprite = sample.behindHair.sprite;
         CheckIfNull(behindHair);
+        behindHair.color = sample.behindHair.color;
         wing.sprite = sample.wing.sprite;
         CheckIfNull(wing);
         body.sprite = sample.body.sprite;
@@ -184,6 +188,7 @@ public class SaveDoll : MonoBehaviour
         CheckIfNull(longDress);
         frontHair.sprite = sample.frontHair.sprite;
         CheckIfNull(frontHair);
+        frontHair.color = sample.frontHair.color;
         hat.sprite = sample.hat.sprite;
         CheckIfNull(hat);
         necklace.sprite = sample.necklace.sprite;

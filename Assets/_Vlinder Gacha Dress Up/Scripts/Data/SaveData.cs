@@ -36,6 +36,7 @@ public class DollSaveData
     public DollComponentData hat;
     public DollComponentData necklace;
     public DollComponentData handBag;
+    public Color hairColor;
 }
 
 [Serializable]

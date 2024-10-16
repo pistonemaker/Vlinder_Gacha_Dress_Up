@@ -158,7 +158,7 @@ public class ItemTypeButton : MonoBehaviour
     {
         dollComponentData.id = curItemData.id;
         dollComponentData.eItemType = eItemType;
-        dollComponentData.sprite = chooseItemSprite;
+        dollComponentData.sprite = targetRenderer.sprite;
     }
 
     protected string ChangeItemTypeToData(EItemType itemType)
@@ -184,7 +184,7 @@ public class ItemTypeButton : MonoBehaviour
             case EItemType.Mouth:
                 return DataKey.ID_Mouth;
             case EItemType.Necklace:
-                return DataKey.ID_Neckless;
+                return DataKey.ID_Necklace;
             case EItemType.Nose:
                 return DataKey.ID_Nose;
             case EItemType.Shoes:

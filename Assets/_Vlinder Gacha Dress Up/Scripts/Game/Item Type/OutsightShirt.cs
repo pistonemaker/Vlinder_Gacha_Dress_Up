@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class OutsightShirt : ItemTypeButton
 {
     protected override void OnEnable()
@@ -9,5 +11,16 @@ public class OutsightShirt : ItemTypeButton
         canChangeRGB = false;
         canChangeBSH = true;
         dollComponentData = ItemBarManager.Instance.dollSaveData.outsightShirt;
+    }
+
+    public override void WearItem(ItemData itemData)
+    {
+        base.WearItem(itemData);
+
+        if (ItemBarManager.Instance.longDressButton.GetCurSpriteRenderer().sprite != null)
+        {
+            ItemBarManager.Instance.longDressButton.GetCurSpriteRenderer().sprite = null;
+            PlayerPrefs.SetInt(DataKey.ID_Long_Dress, 0);
+        }
     }
 }

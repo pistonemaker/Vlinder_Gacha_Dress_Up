@@ -55,7 +55,12 @@ public class SaveManager : Singleton<SaveManager>
 
     private void SetListeners()
     {
-        backButton.onClick.AddListener(() => { SceneManager.LoadSceneAsync("Scenes/Game"); });
+        backButton.onClick.AddListener(() =>
+        {
+            saveData.isEdit = false;
+            saveData.editID = -1;
+            SceneManager.LoadSceneAsync("Scenes/Game");
+        });
     }
 
     public void CreateEmptyDollButton()

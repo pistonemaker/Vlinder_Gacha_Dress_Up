@@ -34,7 +34,6 @@ public class SavePopup : BasePanel
     {
         ClosePanel();
         EventDispatcher.Instance.PostEvent(EventID.On_Save_Game);
-        
         SceneManager.LoadSceneAsync("Scenes/Save");
     }
 }

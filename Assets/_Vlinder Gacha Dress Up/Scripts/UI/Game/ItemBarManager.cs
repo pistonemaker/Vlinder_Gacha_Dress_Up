@@ -15,6 +15,8 @@ public class ItemBarManager : Singleton<ItemBarManager>
     public ItemTypeButton faceAccessoryButton;
     public ItemTypeButton frontHairButton;
     public ItemTypeButton behindHairButton;
+    public ItemTypeButton outsightShirtButton;
+    public ItemTypeButton longDressButton;
     public List<ItemTypeButton> itemTypeButtons;
     public DollSaveData dollSaveData;
     
@@ -98,8 +100,19 @@ public class ItemBarManager : Singleton<ItemBarManager>
         {
             itemTypeButtons[i].SaveData();
         }
+
+        var saveData = GameManager.Instance.saveData;
+        if (saveData.isEdit)
+        {
+            saveData.saveDataList[saveData.editID] = dollSaveData;
+            saveData.isEdit = false;
+            saveData.editID = -1;
+        }
+        else
+        {
+            GameManager.Instance.saveData.saveDataList.Add(dollSaveData);
+        }
         
-        GameManager.Instance.saveData.saveDataList.Add(dollSaveData);
         int count = PlayerPrefs.GetInt(DataKey.Doll_Button);
 
         if (GameManager.Instance.saveData.saveDataList.Count >= count)

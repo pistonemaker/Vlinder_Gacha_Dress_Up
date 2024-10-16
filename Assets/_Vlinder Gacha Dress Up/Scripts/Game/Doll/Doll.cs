@@ -136,37 +136,82 @@ public class Doll : Singleton<Doll>
         if (saveData.isEdit && saveData.editID != -1)
         {
             LoadDoll(saveData.saveDataList[saveData.editID]);
-            saveData.isEdit = false;
-            saveData.editID = -1;
         }
     }
 
     private void LoadDoll(DollSaveData dollSaveData)
     {
         background.sprite = dollSaveData.background.sprite;
+        PlayerPrefs.SetInt(DataKey.ID_Background, dollSaveData.background.id);
         background.size = new Vector2(15f, 30f);
+        
         behindHair.sprite = dollSaveData.behindHair.sprite;
+        behindHair.color = dollSaveData.hairColor;
+        PlayerPrefs.SetInt(DataKey.ID_Behind_Hair, dollSaveData.behindHair.id);
+        
         wing.sprite = dollSaveData.wing.sprite;
+        PlayerPrefs.SetInt(DataKey.ID_Wing, dollSaveData.wing.id);
+        
         body.sprite = dollSaveData.body.sprite;
+        PlayerPrefs.SetInt(DataKey.ID_Body, dollSaveData.body.id);
+        
         socks.sprite = dollSaveData.socks.sprite;
+        PlayerPrefs.SetInt(DataKey.ID_Socks, dollSaveData.socks.id);
+        
         shoes.sprite = dollSaveData.shoes.sprite;
+        PlayerPrefs.SetInt(DataKey.ID_Shoes, dollSaveData.shoes.id);
+
         trousers.sprite = dollSaveData.trousers.sprite;
+        PlayerPrefs.SetInt(DataKey.ID_Trousers, dollSaveData.trousers.id);
+
         shortDress.sprite = dollSaveData.shortDress.sprite;
+        PlayerPrefs.SetInt(DataKey.ID_Short_Dress, dollSaveData.shortDress.id);
+
         eyes.sprite = dollSaveData.eyes.sprite;
+        PlayerPrefs.SetInt(DataKey.ID_Eyes, dollSaveData.eyes.id);
+
         eyeblow.sprite = dollSaveData.eyeblow.sprite;
+        PlayerPrefs.SetInt(DataKey.ID_Eyeblow, dollSaveData.eyeblow.id);
+
         mouth.sprite = dollSaveData.mouth.sprite;
+        PlayerPrefs.SetInt(DataKey.ID_Mouth, dollSaveData.mouth.id);
+
         insightShirt.sprite = dollSaveData.insightShirt.sprite;
+        PlayerPrefs.SetInt(DataKey.ID_Insight_Shirt, dollSaveData.insightShirt.id);
+
         birthmark.sprite = dollSaveData.birthmark.sprite;
+        PlayerPrefs.SetInt(DataKey.ID_Birthmark, dollSaveData.birthmark.id);
+
         earrings.sprite = dollSaveData.earrings.sprite;
+        PlayerPrefs.SetInt(DataKey.ID_Earrings, dollSaveData.earrings.id);
+
         nose.sprite = dollSaveData.nose.sprite;
+        PlayerPrefs.SetInt(DataKey.ID_Nose, dollSaveData.nose.id);
+
         glass.sprite = dollSaveData.glass.sprite;
+        PlayerPrefs.SetInt(DataKey.ID_Glass, dollSaveData.glass.id);
+
         blush.sprite = dollSaveData.blush.sprite;
+        PlayerPrefs.SetInt(DataKey.ID_Blush, dollSaveData.blush.id);
+
         outsightShirt.sprite = dollSaveData.outsightShirt.sprite;
+        PlayerPrefs.SetInt(DataKey.ID_Outsight_Shirt, dollSaveData.outsightShirt.id);
+
         longDress.sprite = dollSaveData.longDress.sprite;
+        PlayerPrefs.SetInt(DataKey.ID_Long_Dress, dollSaveData.longDress.id);
+
         frontHair.sprite = dollSaveData.frontHair.sprite;
+        frontHair.color = dollSaveData.hairColor;
+        PlayerPrefs.SetInt(DataKey.ID_Front_Hair, dollSaveData.frontHair.id);
+
         hat.sprite = dollSaveData.hat.sprite;
+        PlayerPrefs.SetInt(DataKey.ID_Hat, dollSaveData.hat.id);
+
         necklace.sprite = dollSaveData.necklace.sprite;
+        PlayerPrefs.SetInt(DataKey.ID_Necklace, dollSaveData.necklace.id);
+
         handBag.sprite = dollSaveData.handBag.sprite;
+        PlayerPrefs.SetInt(DataKey.ID_Hand_Bag, dollSaveData.handBag.id);
     }
 
     private SpriteRenderer FindSuitableRenderer(EItemType eItemType)

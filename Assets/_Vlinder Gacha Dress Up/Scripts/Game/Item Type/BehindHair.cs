@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class BehindHair : ItemTypeButton
 {
     protected override void OnEnable()
@@ -20,6 +18,16 @@ public class BehindHair : ItemTypeButton
         if (ItemBarManager.Instance.isApplyColor)
         {
             targetRenderer.color = ItemBarManager.Instance.currentColor;
+        }
+    }
+
+    public override void SaveData()
+    {
+        base.SaveData();
+        
+        if (targetRenderer.sprite != null)
+        {
+            ItemBarManager.Instance.dollSaveData.hairColor = targetRenderer.color;
         }
     }
 }

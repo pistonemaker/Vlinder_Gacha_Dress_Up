@@ -20,7 +20,7 @@ public static class DataKey
     public const string ID_Insight_Shirt = "ID_Insight_Shirt";
     public const string ID_Outsight_Shirt = "ID_Outsight_Shirt";
     public const string ID_Hat = "ID_Hat";
-    public const string ID_Neckless = "ID_Neckless";
+    public const string ID_Necklace = "ID_Necklace";
     public const string ID_Hand_Bag = "ID_Hand_Bag";
     public const string ID_Birthmark = "ID_Birthmark";
     public const string ID_Blush = "ID_Blush";
