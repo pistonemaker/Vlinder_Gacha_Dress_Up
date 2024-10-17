@@ -1,18 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SPLManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Button playButton;
+
+    private void OnEnable()
     {
-        
+        playButton.onClick.AddListener(() =>
+        {
+            LoadSceneManager.Instance.LoadScene("Game");
+        });
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        Application.targetFrameRate = 60;
+    }
+
+    private void OnDisable()
+    {
+        playButton.onClick.RemoveAllListeners();
     }
 }

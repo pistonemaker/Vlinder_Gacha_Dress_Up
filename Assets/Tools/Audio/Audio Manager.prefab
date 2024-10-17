@@ -45,9 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac9d1f8c30c923547b95cf64f25ac15d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicSound:
-  - name: Game_Play
-    clip: {fileID: 8300000, guid: 429261da8d70370488b51150d907b5b0, type: 3}
+  musicSound: []
   sfxSound: []
   musicSource: {fileID: 3749752966989994340}
   sFXSource: {fileID: 3749752967420138651}
@@ -96,8 +94,8 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
-  Mute: 0
+  Loop: 1
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128

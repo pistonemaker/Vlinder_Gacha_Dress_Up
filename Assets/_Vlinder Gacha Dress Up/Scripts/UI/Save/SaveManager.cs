@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SaveManager : Singleton<SaveManager>
@@ -46,7 +45,7 @@ public class SaveManager : Singleton<SaveManager>
             {
                 var saveDoll = PoolingManager.Spawn(saveDollPrefab, transform.position, Quaternion.identity);
                 saveDoll.transform.SetParent(dollButtonList[i].transform);
-                saveDoll.transform.localScale = Vector3.one * 0.3f;
+                saveDoll.transform.localScale = Vector3.one * 0.2f;
                 saveDoll.Init(saveData.saveDataList[i]);
                 dollButtonList[i].saveDoll = saveDoll;
                 saveDollList.Add(saveDoll);
@@ -60,7 +59,7 @@ public class SaveManager : Singleton<SaveManager>
         {
             saveData.isEdit = false;
             saveData.editID = -1;
-            SceneManager.LoadSceneAsync("Scenes/Game");
+            LoadSceneManager.Instance.LoadScene("Game");
         });
     }
 

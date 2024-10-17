@@ -27,13 +27,13 @@ public class SavePopup : BasePanel
     private void LoadSaveScene()
     {
         ClosePanel();
-        SceneManager.LoadSceneAsync("Scenes/Save");
+        LoadSceneManager.Instance.LoadScene("Save");
     }
 
     private void SaveDoll()
     {
         ClosePanel();
         EventDispatcher.Instance.PostEvent(EventID.On_Save_Game);
-        SceneManager.LoadSceneAsync("Scenes/Save");
+        LoadSceneManager.Instance.LoadScene("Save");
     }
 }

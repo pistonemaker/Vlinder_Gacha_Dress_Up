@@ -35,7 +35,7 @@ public class ShowDollPanel : BasePanel
             gameObject.SetActive(false);
             SaveManager.Instance.saveData.isEdit = true;
             SaveManager.Instance.saveData.editID = curID;
-            SceneManager.LoadSceneAsync("Scenes/Game");
+            LoadSceneManager.Instance.LoadScene("Game");
         });
         
         deleteButton.onClick.AddListener(() =>

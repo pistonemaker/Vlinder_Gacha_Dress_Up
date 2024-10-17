@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LoadSceneManager : Singleton<LoadSceneManager>
@@ -6,11 +7,18 @@ public class LoadSceneManager : Singleton<LoadSceneManager>
     protected override void Awake()
     {
         base.Awake();
+        DontDestroyOnLoad(gameObject);
     }
 
     public void LoadScene(string sceneName)
     {
-        SceneManager.LoadSceneAsync(sceneName);
+        LoadScenePro(sceneName);
+    }
+
+    public void ReloadScene()
+    {
+        var curSceneName = SceneManager.GetActiveScene().name;
+        LoadScenePro(curSceneName);
     }
     
     public void LoadScenePro(string sceneName)
@@ -18,24 +26,18 @@ public class LoadSceneManager : Singleton<LoadSceneManager>
         StartCoroutine(IELoadScene(sceneName));
     }
 
-    public void ReloadScene()
-    {
-        var curSceneName = SceneManager.GetActiveScene().name;
-        SceneManager.LoadSceneAsync(curSceneName);
-    }
-
-    public void ReloadScenePro()
-    {
-        var curSceneName = SceneManager.GetActiveScene().name;
-        StartCoroutine(IELoadScene(curSceneName));
-    }
-
     public IEnumerator IELoadScene(string sceneName)
     {
+        TransitionFx.Instance.StartLoadScene();
+        yield return new WaitForSeconds(1f);
         var asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+        
         while (!asyncLoad.isDone)
         {
             yield return null;
         }
+
+        yield return new WaitForSeconds(1f);
+        TransitionFx.Instance.EndLoadScene();
     }
 }

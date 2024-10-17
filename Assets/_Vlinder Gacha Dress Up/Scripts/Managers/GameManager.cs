@@ -8,7 +8,6 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         Application.targetFrameRate = 60;
-        AudioManager.Instance.PlayMusic("Game_Play");
     }
 
     private void OnApplicationQuit()

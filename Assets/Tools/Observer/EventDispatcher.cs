@@ -96,11 +96,6 @@ public class EventDispatcher : MonoBehaviour
         {
             gameEventsManager[eventID] -= callBackAction;
         }
-        // Nếu trong Dictionary không chứa id truyền vào thì thông báo không tìm thấy key
-        else
-        {
-            Debug.Log("Not Found EventID with id: " + eventID);
-        }
     }
 
     // Huỷ đăng ký tất cả sự kiện của tất cả Object
