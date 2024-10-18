@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -51,6 +52,11 @@ public class SaveManager : Singleton<SaveManager>
                 saveDollList.Add(saveDoll);
             }
         }
+
+        for (int i = 0; i < dollButtonList.Count; i++)
+        {
+            dollButtonList[i].LoadBG();
+        }
     }
 
     private void SetListeners()
@@ -59,6 +65,7 @@ public class SaveManager : Singleton<SaveManager>
         {
             saveData.isEdit = false;
             saveData.editID = -1;
+            DOTween.KillAll();
             LoadSceneManager.Instance.LoadScene("Game");
         });
     }

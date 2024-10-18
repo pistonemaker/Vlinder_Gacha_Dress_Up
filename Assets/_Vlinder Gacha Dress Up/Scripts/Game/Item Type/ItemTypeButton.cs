@@ -114,6 +114,7 @@ public class ItemTypeButton : MonoBehaviour
                     }
                 }
 
+                StartCoroutine(StarSpawner.Instance.SpawnStar());
                 var key = ChangeItemTypeToData(eItemType);
                 PlayerPrefs.SetInt(key, itemData.id);
             }

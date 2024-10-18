@@ -255,6 +255,13 @@ namespace Com.TheFallenGames.OSA.CustomAdapters.GridView
 			if (numCellsPerGroupToUse < 1)
 				numCellsPerGroupToUse = 1;
 
+			int maxCellsPerGroup = numCellsPerGroupToUse * -Grid.MaxCellsPerGroup;
+			float sizeX = maxCellsPerGroup * CellPrefabLayoutElement.preferredWidth + (maxCellsPerGroup - 1) * ContentSpacing;
+			float scrollViewSizeX = ScrollViewRT.rect.size.x;
+			float padding = (scrollViewSizeX - sizeX) / 2f;
+			ContentPadding.left = (int)padding;
+			ContentPadding.right = (int)padding;
+			
 			return numCellsPerGroupToUse * -Grid.MaxCellsPerGroup;
 		}
 
@@ -351,6 +358,7 @@ namespace Com.TheFallenGames.OSA.CustomAdapters.GridView
 			}
 
 			_TheOnlyGroupPrefab.childAlignment = Grid.AlignmentOfCellsInGroup;
+			//_TheOnlyGroupPrefab.childAlignment = TextAnchor.MiddleLeft;
 			_TheOnlyGroupPrefab.padding = Grid.GroupPadding;
 		}
 

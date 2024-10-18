@@ -1,9 +1,12 @@
+using DG.Tweening;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ShowDollPanel : BasePanel
 {
     public int curID;
+    public Image BG;
     public Button backButton;
     public Button editButton;
     public Button deleteButton;
@@ -13,6 +16,7 @@ public class ShowDollPanel : BasePanel
     {
         curID = id;
         saveDoll.CloneDoll(doll);
+        BG.sprite = saveDoll.background.sprite;
     }
 
     protected override void LoadButtonAndImage()
@@ -21,6 +25,7 @@ public class ShowDollPanel : BasePanel
         editButton = transform.Find("Edit Button").GetComponent<Button>();
         deleteButton = transform.Find("Delete Button").GetComponent<Button>();
         saveDoll = transform.Find("Save Doll").GetComponent<SaveDoll>();
+        BG = GetComponent<Image>();
     }
 
     protected override void SetListener()
@@ -35,6 +40,7 @@ public class ShowDollPanel : BasePanel
             gameObject.SetActive(false);
             SaveManager.Instance.saveData.isEdit = true;
             SaveManager.Instance.saveData.editID = curID;
+            DOTween.KillAll();
             LoadSceneManager.Instance.LoadScene("Game");
         });
         

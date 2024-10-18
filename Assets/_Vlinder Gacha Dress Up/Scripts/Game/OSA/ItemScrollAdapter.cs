@@ -16,6 +16,8 @@ public class ItemScrollAdapter : GridAdapter<MyGridParams, MyCellViewsHolder>
         var cancel = _Params.Animation.Cancel;
         cancel.UserAnimations.OnCountChanges = false;
         cancel.UserAnimations.OnSizeChanges = false;
+        int count = _Params.Grid.MaxCellsPerGroup;
+        //Debug.Log(count);
     }
 
     protected override void Update()

@@ -43,6 +43,7 @@ public class FaceAccessories : ItemTypeButton
             {
                 targetRender.sprite = data.sprite;
                 var key = ChangeItemTypeToData(data.itemtype);
+                StartCoroutine(StarSpawner.Instance.SpawnStar());
                 PlayerPrefs.SetInt(key, data.id);
             }
         }

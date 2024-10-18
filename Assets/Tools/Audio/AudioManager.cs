@@ -24,7 +24,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        PlayMusic("Game_Play");
+        PlayMusic("Game_Play", 0.5f);
     }
 
     public void PlayMusic(string mName, float volume = 1f)
