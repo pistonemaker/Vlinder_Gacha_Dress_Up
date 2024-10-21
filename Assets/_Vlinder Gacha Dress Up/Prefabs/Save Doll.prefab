@@ -256,6 +256,27 @@ MonoBehaviour:
       eItemType: 0
       id: 0
       sprite: {fileID: 0}
+    hairColor: {r: 0, g: 0, b: 0, a: 0}
+    trouserMaterial:
+      brightness: 0
+      saturation: 0
+      hue: 0
+    insightShirtMaterial:
+      brightness: 0
+      saturation: 0
+      hue: 0
+    outsightShirtMaterial:
+      brightness: 0
+      saturation: 0
+      hue: 0
+    shortDressMaterial:
+      brightness: 0
+      saturation: 0
+      hue: 0
+    longDressMaterial:
+      brightness: 0
+      saturation: 0
+      hue: 0
   images: []
   background: {fileID: 0}
   behindHair: {fileID: 0}
@@ -367,6 +388,7 @@ GameObject:
   - component: {fileID: 5576636110456212227}
   - component: {fileID: 5576636110456212225}
   - component: {fileID: 5576636110456212226}
+  - component: {fileID: 4962685362067361962}
   m_Layer: 5
   m_Name: Short Dress
   m_TagString: Untagged
@@ -431,6 +453,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4962685362067361962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5576636110456212252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee158225ee1e59f4791627785501d950, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shaderTypes: 0
+  normalStrength: 5
+  normalSmoothing: 1
+  computingNormal: 0
 --- !u!1 &5576636110513582651
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,6 +698,27 @@ MonoBehaviour:
       eItemType: 0
       id: 0
       sprite: {fileID: 0}
+    hairColor: {r: 0, g: 0, b: 0, a: 0}
+    trouserMaterial:
+      brightness: 0
+      saturation: 0
+      hue: 0
+    insightShirtMaterial:
+      brightness: 0
+      saturation: 0
+      hue: 0
+    outsightShirtMaterial:
+      brightness: 0
+      saturation: 0
+      hue: 0
+    shortDressMaterial:
+      brightness: 0
+      saturation: 0
+      hue: 0
+    longDressMaterial:
+      brightness: 0
+      saturation: 0
+      hue: 0
   images:
   - {fileID: 5576636111915922026}
   - {fileID: 5576636111557817446}
@@ -868,6 +927,7 @@ GameObject:
   - component: {fileID: 5576636110806752420}
   - component: {fileID: 5576636110806752426}
   - component: {fileID: 5576636110806752427}
+  - component: {fileID: 6597508421663675888}
   m_Layer: 5
   m_Name: Insight Shirt
   m_TagString: Untagged
@@ -932,6 +992,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6597508421663675888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5576636110806752421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee158225ee1e59f4791627785501d950, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shaderTypes: 4
+  normalStrength: 5
+  normalSmoothing: 1
+  computingNormal: 0
 --- !u!1 &5576636110965245607
 GameObject:
   m_ObjectHideFlags: 0
@@ -943,6 +1019,7 @@ GameObject:
   - component: {fileID: 5576636110965245606}
   - component: {fileID: 5576636110965245604}
   - component: {fileID: 5576636110965245605}
+  - component: {fileID: 4523705329226685109}
   m_Layer: 5
   m_Name: Trousers
   m_TagString: Untagged
@@ -1007,6 +1084,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4523705329226685109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5576636110965245607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee158225ee1e59f4791627785501d950, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shaderTypes: 0
+  normalStrength: 5
+  normalSmoothing: 1
+  computingNormal: 0
 --- !u!1 &5576636111078308501
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,6 +1336,7 @@ GameObject:
   - component: {fileID: 5576636111378064400}
   - component: {fileID: 5576636111378064406}
   - component: {fileID: 5576636111378064407}
+  - component: {fileID: 6392119636449573451}
   m_Layer: 5
   m_Name: Long Dress
   m_TagString: Untagged
@@ -1307,6 +1401,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6392119636449573451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5576636111378064401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee158225ee1e59f4791627785501d950, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shaderTypes: 0
+  normalStrength: 5
+  normalSmoothing: 1
+  computingNormal: 0
 --- !u!1 &5576636111393056551
 GameObject:
   m_ObjectHideFlags: 0
@@ -1359,6 +1469,7 @@ GameObject:
   - component: {fileID: 5576636111401747198}
   - component: {fileID: 5576636111401747196}
   - component: {fileID: 5576636111401747197}
+  - component: {fileID: 4416735833967164696}
   m_Layer: 5
   m_Name: Outsight Shirt
   m_TagString: Untagged
@@ -1423,6 +1534,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4416735833967164696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5576636111401747199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee158225ee1e59f4791627785501d950, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shaderTypes: 4
+  normalStrength: 5
+  normalSmoothing: 1
+  computingNormal: 0
 --- !u!1 &5576636111486236085
 GameObject:
   m_ObjectHideFlags: 0

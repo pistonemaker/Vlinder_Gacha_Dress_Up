@@ -31,7 +31,7 @@ public class ItemBarManager : Singleton<ItemBarManager>
         this.RegisterListener(EventID.On_Wear_Item, param => WearItem((ItemData)param));
 
         EventDispatcher.Instance.RegisterListener(EventID.On_Save_Game, OnSaveGame);
-        //chooseBSHPanel.gameObject.SetActive(false);
+        chooseBSHPanel.gameObject.SetActive(false);
         chooseColorPanel.gameObject.SetActive(false);
         editColorPopup.gameObject.SetActive(false);
     }
@@ -73,6 +73,15 @@ public class ItemBarManager : Singleton<ItemBarManager>
         if (currentItemTypeButton.canChangeRGB)
         {
             chooseColorPanel.gameObject.SetActive(true);
+            UIManager.Instance.saveButton.gameObject.SetActive(false);
+            UIManager.Instance.takeOffButton.gameObject.SetActive(false);
+        }
+        
+        if (currentItemTypeButton.canChangeBSH)
+        {
+            chooseBSHPanel.gameObject.SetActive(true);
+            chooseBSHPanel.LoadRenderer(currentItemTypeButton.GetRenderer());
+            chooseBSHPanel.ResetValue();
             UIManager.Instance.saveButton.gameObject.SetActive(false);
             UIManager.Instance.takeOffButton.gameObject.SetActive(false);
         }

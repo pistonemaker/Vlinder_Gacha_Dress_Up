@@ -37,6 +37,11 @@ public class DollSaveData
     public DollComponentData necklace;
     public DollComponentData handBag;
     public Color hairColor;
+    public ConfigShader trouserMaterial;
+    public ConfigShader insightShirtMaterial;
+    public ConfigShader outsightShirtMaterial;
+    public ConfigShader shortDressMaterial;
+    public ConfigShader longDressMaterial;
 }
 
 [Serializable]
@@ -46,3 +51,15 @@ public class DollComponentData
     public int id;
     public Sprite sprite;
 }
+
+[Serializable]
+public class ConfigShader
+{
+    public float brightness;
+    public float saturation;
+    public float hue;
+}
+
+
+
+

@@ -8,11 +8,12 @@ public class ChooseBSHPanel : BasePanel
     public Slider hueSlider;
     public Button resetButton;
     public SpriteRenderer editRenderer;
+    public Material material;
 
     protected override void OnEnable()
     {
         base.OnEnable();
-        LoadRenderer();
+        LoadRenderer(ItemBarManager.Instance.currentItemTypeButton.GetRenderer());
     }
 
     protected override void LoadButtonAndImage()
@@ -39,13 +40,17 @@ public class ChooseBSHPanel : BasePanel
         resetButton.onClick.RemoveAllListeners();
     }
 
-    private void LoadRenderer()
-    {
-        editRenderer = ItemBarManager.Instance.currentItemTypeButton.GetRenderer();
-        brightnessSlider.value = 1;
-        saturationSlider.value = 1;
-        hueSlider.value = 1;
-        ChangeColorValue();
+    public void LoadRenderer(SpriteRenderer sr)
+    { 
+        editRenderer = sr;
+        material = editRenderer.material;
+        material.SetFloat(DataKey.OutlineGlow, 200f);
+        material.SetFloat(DataKey.OutlineAlpha, 0f);
+        material.SetFloat(DataKey.GreyscaleBlend, 0f);
+        material.SetFloat(DataKey.HsvShift, 0f);
+        brightnessSlider.value = 0;
+        saturationSlider.value = 0;
+        hueSlider.value = 0;
     }
     
     public void ChangeColorValue()
@@ -53,17 +58,19 @@ public class ChooseBSHPanel : BasePanel
         float hue = hueSlider.value; 
         float saturation = saturationSlider.value;
         float brightness = brightnessSlider.value; 
-
-        Color color = Color.HSVToRGB(hue, saturation, brightness);
-
-        if (editRenderer != null)
-        {
-            editRenderer.color = color;
-        }
+        material.SetFloat(DataKey.OutlineAlpha, brightness);
+        material.SetFloat(DataKey.GreyscaleBlend, saturation);
+        material.SetFloat(DataKey.HsvShift, hue * 360);
     }
 
-    private void ResetValue()
+    public void ResetValue()
     {
-        editRenderer.color = Color.white;
+        material.SetFloat(DataKey.OutlineGlow, 200f);
+        material.SetFloat(DataKey.OutlineAlpha, 0f);
+        material.SetFloat(DataKey.GreyscaleBlend, 0f);
+        material.SetFloat(DataKey.HsvShift, 0f);
+        brightnessSlider.value = 0;
+        saturationSlider.value = 0;
+        hueSlider.value = 0;
     }
 }

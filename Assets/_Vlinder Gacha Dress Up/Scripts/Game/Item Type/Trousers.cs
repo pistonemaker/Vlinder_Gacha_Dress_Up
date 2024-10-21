@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class Trousers : ItemTypeButton
 {
     protected override void OnEnable()
@@ -11,5 +9,15 @@ public class Trousers : ItemTypeButton
         canChangeRGB = false;
         canChangeBSH = true;
         dollComponentData = ItemBarManager.Instance.dollSaveData.trousers;
+    }
+
+    public override void SaveData()
+    {
+        base.SaveData();
+        
+        if (targetRenderer.sprite != null)
+        {
+            DataKey.GetConFigShader(targetRenderer.material, ItemBarManager.Instance.dollSaveData.trouserMaterial);
+        }
     }
 }

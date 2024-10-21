@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class ShortDress : ItemTypeButton
 {
     protected override void OnEnable()
@@ -11,5 +9,15 @@ public class ShortDress : ItemTypeButton
         canChangeRGB = false;
         canChangeBSH = true;
         dollComponentData = ItemBarManager.Instance.dollSaveData.shortDress;
+    }
+    
+    public override void SaveData()
+    {
+        base.SaveData();
+        
+        if (targetRenderer.sprite != null)
+        {
+            DataKey.GetConFigShader(targetRenderer.material, ItemBarManager.Instance.dollSaveData.shortDressMaterial);
+        }
     }
 }

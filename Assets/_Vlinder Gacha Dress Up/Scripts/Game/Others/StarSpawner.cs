@@ -7,7 +7,7 @@ public class StarSpawner : Singleton<StarSpawner>
     public Star starPrefab;
     public Sprite sprite1;
     public Sprite sprite2;
-    public int starNumber;  // Số lượng ngôi sao cần spawn mỗi đợt
+    public int starNumber;
     public float width;
     public float height;
     public float duration;
@@ -21,7 +21,7 @@ public class StarSpawner : Singleton<StarSpawner>
                 var star = PoolingManager.Spawn(starPrefab, transform.position, Quaternion.identity);
                 star.transform.SetParent(transform);
 
-                Vector2 startPos = new Vector2(Random.Range(-width, width), Random.Range(-height, height) + 3f);
+                Vector2 startPos = new Vector2(Random.Range(-width, width), Random.Range(-height, height) + 1.5f);
                 star.transform.position = startPos;
 
                 star.sr.sprite = sprite1;

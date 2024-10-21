@@ -88,8 +88,10 @@ public class SaveDoll : MonoBehaviour
         CheckIfNull(shoes);
         trousers.sprite = data.trousers.sprite;
         CheckIfNull(trousers);
+        DataKey.ApplyConfig(trousers.material, data.trouserMaterial);
         shortDress.sprite = data.shortDress.sprite;
         CheckIfNull(shortDress);
+        DataKey.ApplyConfig(shortDress.material, data.shortDressMaterial);
         eyes.sprite = data.eyes.sprite;
         CheckIfNull(eyes);
         eyeblow.sprite = data.eyeblow.sprite;
@@ -98,6 +100,7 @@ public class SaveDoll : MonoBehaviour
         CheckIfNull(mouth);
         insightShirt.sprite = data.insightShirt.sprite;
         CheckIfNull(insightShirt);
+        DataKey.ApplyConfig(insightShirt.material, data.insightShirtMaterial);
         birthmark.sprite = data.birthmark.sprite;
         CheckIfNull(birthmark);
         earrings.sprite = data.earrings.sprite;
@@ -110,8 +113,10 @@ public class SaveDoll : MonoBehaviour
         CheckIfNull(blush);
         outsightShirt.sprite = data.outsightShirt.sprite;
         CheckIfNull(outsightShirt);
+        DataKey.ApplyConfig(outsightShirt.material, data.outsightShirtMaterial);
         longDress.sprite = data.longDress.sprite;
         CheckIfNull(longDress);
+        DataKey.ApplyConfig(longDress.material, data.longDressMaterial);
         frontHair.sprite = data.frontHair.sprite;
         CheckIfNull(frontHair);
         frontHair.color = data.hairColor;
@@ -162,8 +167,11 @@ public class SaveDoll : MonoBehaviour
         CheckIfNull(shoes);
         trousers.sprite = sample.trousers.sprite;
         CheckIfNull(trousers);
+        DataKey.CloneMaterial(trousers.material, sample.trousers.material);
         shortDress.sprite = sample.shortDress.sprite;
         CheckIfNull(shortDress);
+        shortDress.material = sample.shortDress.material;
+        DataKey.CloneMaterial(shortDress.material, sample.shortDress.material);
         eyes.sprite = sample.eyes.sprite;
         CheckIfNull(eyes);
         eyeblow.sprite = sample.eyeblow.sprite;
@@ -172,6 +180,7 @@ public class SaveDoll : MonoBehaviour
         CheckIfNull(mouth);
         insightShirt.sprite = sample.insightShirt.sprite;
         CheckIfNull(insightShirt);
+        DataKey.CloneMaterial(insightShirt.material, sample.insightShirt.material);
         birthmark.sprite = sample.birthmark.sprite;
         CheckIfNull(birthmark);
         earrings.sprite = sample.earrings.sprite;
@@ -184,8 +193,10 @@ public class SaveDoll : MonoBehaviour
         CheckIfNull(blush);
         outsightShirt.sprite = sample.outsightShirt.sprite;
         CheckIfNull(outsightShirt);
+        DataKey.CloneMaterial(outsightShirt.material, sample.outsightShirt.material);
         longDress.sprite = sample.longDress.sprite;
         CheckIfNull(longDress);
+        DataKey.CloneMaterial(longDress.material, sample.longDress.material);
         frontHair.sprite = sample.frontHair.sprite;
         CheckIfNull(frontHair);
         frontHair.color = sample.frontHair.color;

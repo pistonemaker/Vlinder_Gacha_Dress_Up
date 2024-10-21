@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class DataLoader : Singleton<DataLoader>
 {
-    public GameData gameData; // ScriptableObject chứa data
+    public GameData gameData;
     public List<Sprite> sprites;
+    public Dictionary<string, Sprite> spriteDictionary = new Dictionary<string, Sprite>();
 
     protected override void Awake()
     {
         base.Awake();
+
         GetSpriteData();
+
+        float startTime = Time.realtimeSinceStartup;
         LoadData();
+        float endTime = Time.realtimeSinceStartup;
+        float loadingDuration = endTime - startTime;
+        Debug.Log($"Time Load Data: {loadingDuration} seconds");
     }
 
     private void GetSpriteData()
@@ -21,7 +28,6 @@ public class DataLoader : Singleton<DataLoader>
             return;
         }
 
-        // Load tất cả các sprite từ thư mục Resources/Item
         Sprite[] loadedSprites = Resources.LoadAll<Sprite>("Item");
 
         foreach (Sprite sprite in loadedSprites)
@@ -29,6 +35,7 @@ public class DataLoader : Singleton<DataLoader>
             if (sprite != null)
             {
                 sprites.Add(sprite);
+                spriteDictionary.Add(sprite.name, sprite);
             }
         }
     }
@@ -40,14 +47,16 @@ public class DataLoader : Singleton<DataLoader>
             return;
         }
 
-        string[] itemFolders = { "_Background", "_Behind Hair", "_Body", "_Eyeblow", "_Eyes", 
-            "_Earrings", "_Birthmark", "_Glass", "_Nose", "_Blush", "_Front Hair", "_Hand Bag", 
-            "_Hat", "_Insight Shirt", "_Long Dress", "_Mouth", "_Necklace", "_Outsight Shirt", 
-            "_Shoes", "_Short Dress", "_Socks", "_Trousers", "_Wing" };
-        
+        string[] itemFolders =
+        {
+            "_Background", "_Behind Hair", "_Body", "_Eyeblow", "_Eyes",
+            "_Earrings", "_Birthmark", "_Glass", "_Nose", "_Blush", "_Front Hair", "_Hand Bag",
+            "_Hat", "_Insight Shirt", "_Long Dress", "_Mouth", "_Necklace", "_Outsight Shirt",
+            "_Shoes", "_Short Dress", "_Socks", "_Trousers", "_Wing"
+        };
+
         foreach (string folderName in itemFolders)
         {
-            // Load tất cả các sprite từ từng thư mục con trong Resources/UI Thumb
             Sprite[] spritesInFolder = Resources.LoadAll<Sprite>($"UI Thumb/{folderName}");
 
             int index = 0;
@@ -56,7 +65,8 @@ public class DataLoader : Singleton<DataLoader>
                 if (sprite != null)
                 {
                     ItemData itemData = new ItemData();
-                    FindSuitableSprites(sprite, itemData);
+                    //FindSuitableSprites(sprite, itemData, index);
+                    FindSuitableSpritesInDict(sprite, itemData);
 
                     EItemType eItemType = GetEItemType(folderName);
 
@@ -74,39 +84,81 @@ public class DataLoader : Singleton<DataLoader>
         }
     }
 
-    private void FindSuitableSprites(Sprite sprite, ItemData itemData)
+    private void FindSuitableSprites(Sprite sprite, ItemData itemData, int index)
     {
-        for (int i = 0; i < sprites.Count; i++)
+        if (sprite.name == "0None")
+        {
+            itemData.thumbSprite = sprite;
+            itemData.isLight = false;
+            itemData.isColor = false;
+            return;
+        }
+
+        if (sprite.name == "0Noneee")
+        {
+            itemData.thumbSprite = sprite;
+            itemData.isLight = false;
+            itemData.isColor = false;
+            return;
+        }
+
+        for (int i = index; i < sprites.Count; i++)
         {
             if (sprites[i].name == sprite.name)
             {
                 itemData.sprite = sprites[i];
                 itemData.thumbSprite = sprite;
             }
-            else if (sprites[i].name == sprite.name + "light")
+
+            if (sprites[i].name == sprite.name + "light")
             {
                 itemData.isLight = true;
                 itemData.lightSprite = sprites[i];
             }
-            else if (sprites[i].name == sprite.name + "color")
+
+            if (sprites[i].name == sprite.name + "color")
             {
                 itemData.isColor = true;
                 itemData.colorSprite = sprites[i];
+                return;
             }
+        }
+    }
 
-            if (sprite.name == "0None")
-            {
-                itemData.thumbSprite = sprite;
-                itemData.isLight = false;
-                itemData.isColor = false;
-            }
+    private void FindSuitableSpritesInDict(Sprite sprite, ItemData itemData)
+    {
+        if (sprite.name == "0None")
+        {
+            itemData.thumbSprite = sprite;
+            itemData.isLight = false;
+            itemData.isColor = false;
+            return;
+        }
 
-            if (sprite.name == "0Noneee")
-            {
-                itemData.thumbSprite = sprite;
-                itemData.isLight = false;
-                itemData.isColor = false;
-            }
+        if (sprite.name == "0Noneee")
+        {
+            itemData.thumbSprite = sprite;
+            itemData.isLight = false;
+            itemData.isColor = false;
+            return;
+        }
+
+        if (spriteDictionary.ContainsKey(sprite.name))
+        {
+            itemData.sprite = spriteDictionary[sprite.name];
+            itemData.thumbSprite = sprite;
+        }
+
+        if (spriteDictionary.ContainsKey(sprite.name + "light"))
+        {
+            itemData.isLight = true;
+            itemData.lightSprite = spriteDictionary[sprite.name + "light"];
+        }
+
+        if (spriteDictionary.ContainsKey(sprite.name + "color"))
+        {
+            itemData.isColor = true;
+            itemData.colorSprite = spriteDictionary[sprite.name + "color"];
         }
     }
 

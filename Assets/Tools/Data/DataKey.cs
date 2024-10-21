@@ -32,4 +32,30 @@ public static class DataKey
     public const string Doll_Button = "Doll_Button";
     
     #endregion
+    
+    public static readonly int OutlineGlow = Shader.PropertyToID("_OutlineGlow");
+    public static readonly int OutlineAlpha = Shader.PropertyToID("_OutlineAlpha");
+    public static readonly int GreyscaleBlend = Shader.PropertyToID("_GreyscaleBlend");
+    public static readonly int HsvShift = Shader.PropertyToID("_HsvShift");
+
+    public static void ApplyConfig(Material mat, ConfigShader config)
+    {
+        mat.SetFloat(OutlineAlpha, config.brightness);
+        mat.SetFloat(GreyscaleBlend, config.saturation);
+        mat.SetFloat(HsvShift, config.hue);
+    }
+    
+    public static void GetConFigShader(Material mat, ConfigShader config)
+    {
+        config.brightness = mat.GetFloat(OutlineAlpha);
+        config.saturation = mat.GetFloat(GreyscaleBlend);
+        config.hue = mat.GetFloat(HsvShift);
+    }
+
+    public static void CloneMaterial(Material matClone, Material mat)
+    {
+        matClone.SetFloat(OutlineAlpha, mat.GetFloat(OutlineAlpha));
+        matClone.SetFloat(GreyscaleBlend, mat.GetFloat(GreyscaleBlend));
+        matClone.SetFloat(HsvShift, mat.GetFloat(HsvShift));
+    }
 }

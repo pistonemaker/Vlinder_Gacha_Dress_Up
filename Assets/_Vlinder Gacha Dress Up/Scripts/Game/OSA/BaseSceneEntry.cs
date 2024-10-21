@@ -28,7 +28,7 @@ namespace Com.TheFallenGames.OSA.Demos.Common.SceneEntries
 		{
 			InitAdapters();
 
-			InitDrawer();
+			//InitDrawer();
 
 			_InitializedAdapters = 0;
 			foreach (var adapter in _Adapters)

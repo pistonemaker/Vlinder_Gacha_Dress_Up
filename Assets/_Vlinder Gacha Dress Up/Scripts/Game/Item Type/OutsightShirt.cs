@@ -23,4 +23,14 @@ public class OutsightShirt : ItemTypeButton
             PlayerPrefs.SetInt(DataKey.ID_Long_Dress, 0);
         }
     }
+    
+    public override void SaveData()
+    {
+        base.SaveData();
+        
+        if (targetRenderer.sprite != null)
+        {
+            DataKey.GetConFigShader(targetRenderer.material, ItemBarManager.Instance.dollSaveData.outsightShirtMaterial);
+        }
+    }
 }

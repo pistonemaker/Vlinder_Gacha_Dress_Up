@@ -12,11 +12,6 @@ public class LongDress : ItemTypeButton
         canChangeBSH = true;
         dollComponentData = ItemBarManager.Instance.dollSaveData.longDress;
     }
-        
-    protected override void ShowItemGrid()
-    {
-        ItemBarManager.Instance.LoadOSA(eItemType);
-    }
 
     public override void WearItem(ItemData itemData)
     {
@@ -26,6 +21,16 @@ public class LongDress : ItemTypeButton
         {
             ItemBarManager.Instance.outsightShirtButton.GetCurSpriteRenderer().sprite = null;
             PlayerPrefs.SetInt(DataKey.ID_Outsight_Shirt, 0);
+        }
+    }
+    
+    public override void SaveData()
+    {
+        base.SaveData();
+        
+        if (targetRenderer.sprite != null)
+        {
+            DataKey.GetConFigShader(targetRenderer.material, ItemBarManager.Instance.dollSaveData.longDressMaterial);
         }
     }
 }

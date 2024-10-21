@@ -45,14 +45,22 @@ public class ItemTypeButton : MonoBehaviour
         ItemBarManager.Instance.chooseColorPanel.gameObject.SetActive(false);
         UIManager.Instance.saveButton.gameObject.SetActive(true);
         UIManager.Instance.takeOffButton.gameObject.SetActive(true);
-
+        
         if (canChangeBSH)
         {
-            //ItemBarManager.Instance.chooseBSHPanel.gameObject.SetActive(true);
+            if (PlayerPrefs.GetInt(Changer.GetDataKey(eItemType)) > 0)
+            {
+                ItemBarManager.Instance.chooseBSHPanel.gameObject.SetActive(true);
+                ItemBarManager.Instance.chooseBSHPanel.LoadRenderer(targetRenderer);
+            }
+            else
+            {
+                ItemBarManager.Instance.chooseBSHPanel.gameObject.SetActive(false);
+            }
         }
         else
         {
-            //ItemBarManager.Instance.chooseBSHPanel.gameObject.SetActive(false);
+            ItemBarManager.Instance.chooseBSHPanel.gameObject.SetActive(false);
         }
     }
 

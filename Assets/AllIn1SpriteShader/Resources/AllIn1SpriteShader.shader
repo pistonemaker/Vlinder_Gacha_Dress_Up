@@ -21,7 +21,7 @@
         
 		_OutlineColor("Outline Base Color", Color) = (1,1,1,1) //14
 		_OutlineAlpha("Outline Base Alpha",  Range(0,1)) = 1 //15
-		_OutlineGlow("Outline Base Glow", Range(1,100)) = 1.5 //16
+		_OutlineGlow("Outline Base Glow", Range(1,200)) = 1.5 //16
 		_OutlineWidth("Outline Base Width", Range(0,0.2)) = 0.004 //17
 		_OutlinePixelWidth("Outline Base Pixel Width", Int) = 1 //18
 		
@@ -57,7 +57,7 @@
 		_ColorSwapBlueLuminosity("Blue luminosity",  Range(-1,1)) = 0.5 //42
 
 		_HsvShift("Hue Shift", Range(0, 360)) = 180 //43
-		_HsvSaturation("Saturation", Range(0, 2)) = 1 //44
+		_HsvSaturation("Saturation", Range(0, 3)) = 1 //44
 		_HsvBright("Brightness", Range(0, 2)) = 1 //45
 
 		_HitEffectColor("Hit Effect Color", Color) = (1,1,1,1) //46

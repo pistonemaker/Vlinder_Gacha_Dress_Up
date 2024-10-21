@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Com.TheFallenGames.OSA.CustomAdapters.GridView;
 using Com.TheFallenGames.OSA.DataHelpers;
 using Com.TheFallenGames.OSA.Demos.Common.SceneEntries;
+using UnityEngine;
 
 namespace Com.TheFallenGames.OSA.Demos.SelectAndDelete
 {
@@ -27,40 +28,17 @@ namespace Com.TheFallenGames.OSA.Demos.SelectAndDelete
         {
             eItemType = eitemType;
             allItemsLoaded.Clear();
-            
-            foreach (var entry in gameData.data[eItemType].itemdatas)
-            {
-                allItemsLoaded.Add(entry);
-            }
+            allItemsLoaded.AddRange(gameData.data[eItemType].itemdatas);
         }
 
         public void LoadDataAccessories()
         {
             allItemsLoaded.Clear();
-            foreach (var entry in gameData.data[EItemType.Birthmark].itemdatas)
-            {
-                allItemsLoaded.Add(entry);
-            }
-
-            foreach (var entry in gameData.data[EItemType.Blush].itemdatas)
-            {
-                allItemsLoaded.Add(entry);
-            }
-
-            foreach (var entry in gameData.data[EItemType.Nose].itemdatas)
-            {
-                allItemsLoaded.Add(entry);
-            }
-
-            foreach (var entry in gameData.data[EItemType.Earrings].itemdatas)
-            {
-                allItemsLoaded.Add(entry);
-            }
-
-            foreach (var entry in gameData.data[EItemType.Glass].itemdatas)
-            {
-                allItemsLoaded.Add(entry);
-            }
+            allItemsLoaded.AddRange(gameData.data[EItemType.Birthmark].itemdatas);
+            allItemsLoaded.AddRange(gameData.data[EItemType.Blush].itemdatas);
+            allItemsLoaded.AddRange(gameData.data[EItemType.Nose].itemdatas);
+            allItemsLoaded.AddRange(gameData.data[EItemType.Earrings].itemdatas);
+            allItemsLoaded.AddRange(gameData.data[EItemType.Glass].itemdatas);
         }
 
         public void RefreshGrid()
@@ -71,11 +49,6 @@ namespace Com.TheFallenGames.OSA.Demos.SelectAndDelete
 
         protected override void InitDrawer()
         {
-        }
-
-        protected override void OnAllAdaptersInitialized()
-        {
-            base.OnAllAdaptersInitialized();
         }
 
         #region events from DrawerCommandPanel

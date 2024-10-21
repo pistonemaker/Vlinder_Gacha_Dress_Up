@@ -87,7 +87,6 @@ public class Doll : Singleton<Doll>
 
     private void WearSaveItem(EItemType eItemType, int itemIndex)
     {
-        // Debug.Log(eItemType + "\t" + itemIndex);
         PlayerPrefs.SetInt(Changer.GetDataKey(eItemType), itemIndex);
         if (itemIndex == -1)
         {
@@ -162,9 +161,11 @@ public class Doll : Singleton<Doll>
         PlayerPrefs.SetInt(DataKey.ID_Shoes, dollSaveData.shoes.id);
 
         trousers.sprite = dollSaveData.trousers.sprite;
+        DataKey.ApplyConfig(trousers.material, dollSaveData.trouserMaterial);
         PlayerPrefs.SetInt(DataKey.ID_Trousers, dollSaveData.trousers.id);
 
         shortDress.sprite = dollSaveData.shortDress.sprite;
+        DataKey.ApplyConfig(shortDress.material, dollSaveData.shortDressMaterial);
         PlayerPrefs.SetInt(DataKey.ID_Short_Dress, dollSaveData.shortDress.id);
 
         eyes.sprite = dollSaveData.eyes.sprite;
@@ -177,6 +178,7 @@ public class Doll : Singleton<Doll>
         PlayerPrefs.SetInt(DataKey.ID_Mouth, dollSaveData.mouth.id);
 
         insightShirt.sprite = dollSaveData.insightShirt.sprite;
+        DataKey.ApplyConfig(insightShirt.material, dollSaveData.insightShirtMaterial);
         PlayerPrefs.SetInt(DataKey.ID_Insight_Shirt, dollSaveData.insightShirt.id);
 
         birthmark.sprite = dollSaveData.birthmark.sprite;
@@ -195,9 +197,11 @@ public class Doll : Singleton<Doll>
         PlayerPrefs.SetInt(DataKey.ID_Blush, dollSaveData.blush.id);
 
         outsightShirt.sprite = dollSaveData.outsightShirt.sprite;
+        DataKey.ApplyConfig(outsightShirt.material, dollSaveData.outsightShirtMaterial);
         PlayerPrefs.SetInt(DataKey.ID_Outsight_Shirt, dollSaveData.outsightShirt.id);
 
         longDress.sprite = dollSaveData.longDress.sprite;
+        DataKey.ApplyConfig(longDress.material, dollSaveData.longDressMaterial);
         PlayerPrefs.SetInt(DataKey.ID_Long_Dress, dollSaveData.longDress.id);
 
         frontHair.sprite = dollSaveData.frontHair.sprite;
