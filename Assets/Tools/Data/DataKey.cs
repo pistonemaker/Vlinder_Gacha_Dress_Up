@@ -40,6 +40,8 @@ public static class DataKey
 
     public static void ApplyConfig(Material mat, ConfigShader config)
     {
+        Debug.Log("set brightness: " + config.brightness + " saturation : " 
+                  + config.saturation + " hue " + config.hue);
         mat.SetFloat(OutlineAlpha, config.brightness);
         mat.SetFloat(GreyscaleBlend, config.saturation);
         mat.SetFloat(HsvShift, config.hue);

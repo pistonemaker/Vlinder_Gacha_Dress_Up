@@ -12,6 +12,8 @@ public class SaveManager : Singleton<SaveManager>
     public Button backButton;
     
     public ShowDollPanel showDollPanel;
+    public Material saveDollMaterial;
+    
     public List<SaveDoll> saveDollList;
     public List<DollButton> dollButtonList;
 

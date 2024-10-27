@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using AllIn1SpriteShader;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -39,6 +40,8 @@ public class SaveDoll : MonoBehaviour
         GetSpriteRenderers();
         images.Remove(body);
         images.Remove(background);
+        Debug.Log(dollSaveData.insightShirtMaterial.brightness + " " + dollSaveData.insightShirtMaterial.saturation + " " 
+                  + dollSaveData.insightShirtMaterial.hue);
         LoadSaveData(data);
     }
 
@@ -88,9 +91,15 @@ public class SaveDoll : MonoBehaviour
         CheckIfNull(shoes);
         trousers.sprite = data.trousers.sprite;
         CheckIfNull(trousers);
+        //trousers.material = SaveManager.Instance.saveDollMaterial;
+        var newMaterial = Instantiate(SaveManager.Instance.saveDollMaterial);
+        trousers.material = newMaterial;
         DataKey.ApplyConfig(trousers.material, data.trouserMaterial);
         shortDress.sprite = data.shortDress.sprite;
         CheckIfNull(shortDress);
+        //shortDress.material = SaveManager.Instance.saveDollMaterial;
+        newMaterial = Instantiate(SaveManager.Instance.saveDollMaterial);
+        shortDress.material = newMaterial;
         DataKey.ApplyConfig(shortDress.material, data.shortDressMaterial);
         eyes.sprite = data.eyes.sprite;
         CheckIfNull(eyes);
@@ -100,6 +109,9 @@ public class SaveDoll : MonoBehaviour
         CheckIfNull(mouth);
         insightShirt.sprite = data.insightShirt.sprite;
         CheckIfNull(insightShirt);
+        //insightShirt.material = SaveManager.Instance.saveDollMaterial;
+        newMaterial = Instantiate(SaveManager.Instance.saveDollMaterial);
+        insightShirt.material = newMaterial;
         DataKey.ApplyConfig(insightShirt.material, data.insightShirtMaterial);
         birthmark.sprite = data.birthmark.sprite;
         CheckIfNull(birthmark);
@@ -113,9 +125,15 @@ public class SaveDoll : MonoBehaviour
         CheckIfNull(blush);
         outsightShirt.sprite = data.outsightShirt.sprite;
         CheckIfNull(outsightShirt);
+        //outsightShirt.material = SaveManager.Instance.saveDollMaterial;
+        newMaterial = Instantiate(SaveManager.Instance.saveDollMaterial);
+        outsightShirt.material = newMaterial;
         DataKey.ApplyConfig(outsightShirt.material, data.outsightShirtMaterial);
         longDress.sprite = data.longDress.sprite;
         CheckIfNull(longDress);
+        //longDress.material = SaveManager.Instance.saveDollMaterial;
+        newMaterial = Instantiate(SaveManager.Instance.saveDollMaterial);
+        longDress.material = newMaterial;
         DataKey.ApplyConfig(longDress.material, data.longDressMaterial);
         frontHair.sprite = data.frontHair.sprite;
         CheckIfNull(frontHair);
@@ -167,10 +185,15 @@ public class SaveDoll : MonoBehaviour
         CheckIfNull(shoes);
         trousers.sprite = sample.trousers.sprite;
         CheckIfNull(trousers);
+        //trousers.material = SaveManager.Instance.saveDollMaterial;
+        var newMaterial = Instantiate(SaveManager.Instance.saveDollMaterial);
+        trousers.material = newMaterial;
         DataKey.CloneMaterial(trousers.material, sample.trousers.material);
         shortDress.sprite = sample.shortDress.sprite;
         CheckIfNull(shortDress);
-        shortDress.material = sample.shortDress.material;
+        //shortDress.material = SaveManager.Instance.saveDollMaterial;
+        newMaterial = Instantiate(SaveManager.Instance.saveDollMaterial);
+        shortDress.material = newMaterial;
         DataKey.CloneMaterial(shortDress.material, sample.shortDress.material);
         eyes.sprite = sample.eyes.sprite;
         CheckIfNull(eyes);
@@ -180,6 +203,9 @@ public class SaveDoll : MonoBehaviour
         CheckIfNull(mouth);
         insightShirt.sprite = sample.insightShirt.sprite;
         CheckIfNull(insightShirt);
+        //insightShirt.material = SaveManager.Instance.saveDollMaterial;
+        newMaterial = Instantiate(SaveManager.Instance.saveDollMaterial);
+        insightShirt.material = newMaterial;
         DataKey.CloneMaterial(insightShirt.material, sample.insightShirt.material);
         birthmark.sprite = sample.birthmark.sprite;
         CheckIfNull(birthmark);
@@ -193,9 +219,15 @@ public class SaveDoll : MonoBehaviour
         CheckIfNull(blush);
         outsightShirt.sprite = sample.outsightShirt.sprite;
         CheckIfNull(outsightShirt);
+        //outsightShirt.material = SaveManager.Instance.saveDollMaterial;
+        newMaterial = Instantiate(SaveManager.Instance.saveDollMaterial);
+        outsightShirt.material = newMaterial;
         DataKey.CloneMaterial(outsightShirt.material, sample.outsightShirt.material);
         longDress.sprite = sample.longDress.sprite;
         CheckIfNull(longDress);
+        //longDress.material = SaveManager.Instance.saveDollMaterial;
+        newMaterial = Instantiate(SaveManager.Instance.saveDollMaterial);
+        longDress.material = newMaterial;
         DataKey.CloneMaterial(longDress.material, sample.longDress.material);
         frontHair.sprite = sample.frontHair.sprite;
         CheckIfNull(frontHair);

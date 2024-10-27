@@ -38,7 +38,7 @@ public class ItemTypeButton : MonoBehaviour
         ItemBarManager.Instance.ActiveItemButton(this);
     }
 
-    protected void Choose()
+    protected virtual void Choose()
     {
         button.image.sprite = chooseSprite;
         ItemBarManager.Instance.currentItemTypeButton = this;

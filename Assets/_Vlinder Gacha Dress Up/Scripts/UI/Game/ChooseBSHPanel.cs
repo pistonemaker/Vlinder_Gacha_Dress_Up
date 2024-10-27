@@ -41,16 +41,16 @@ public class ChooseBSHPanel : BasePanel
     }
 
     public void LoadRenderer(SpriteRenderer sr)
-    { 
+    {
         editRenderer = sr;
         material = editRenderer.material;
-        material.SetFloat(DataKey.OutlineGlow, 200f);
-        material.SetFloat(DataKey.OutlineAlpha, 0f);
-        material.SetFloat(DataKey.GreyscaleBlend, 0f);
-        material.SetFloat(DataKey.HsvShift, 0f);
-        brightnessSlider.value = 0;
-        saturationSlider.value = 0;
-        hueSlider.value = 0;
+        // material.SetFloat(DataKey.OutlineGlow, 200f);
+        // material.SetFloat(DataKey.OutlineAlpha, 0f);
+        // material.SetFloat(DataKey.GreyscaleBlend, 0f);
+        // material.SetFloat(DataKey.HsvShift, 0f);
+        // brightnessSlider.value = 0;
+        // saturationSlider.value = 0;
+        // hueSlider.value = 0;
     }
     
     public void ChangeColorValue()
@@ -72,5 +72,15 @@ public class ChooseBSHPanel : BasePanel
         brightnessSlider.value = 0;
         saturationSlider.value = 0;
         hueSlider.value = 0;
+    }
+
+    public void LoadValue(float brightness, float saturation, float hue)
+    {
+        brightnessSlider.value = brightness;
+        saturationSlider.value = saturation;
+        hueSlider.value = hue;
+        material.SetFloat(DataKey.OutlineAlpha, brightness);
+        material.SetFloat(DataKey.GreyscaleBlend, saturation);
+        material.SetFloat(DataKey.HsvShift, hue * 360);
     }
 }

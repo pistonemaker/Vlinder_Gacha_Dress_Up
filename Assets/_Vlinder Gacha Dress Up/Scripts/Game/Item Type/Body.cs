@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class Body : ItemTypeButton
 {
     protected override void OnEnable()

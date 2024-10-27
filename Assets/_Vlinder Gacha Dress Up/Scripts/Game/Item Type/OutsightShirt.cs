@@ -13,6 +13,20 @@ public class OutsightShirt : ItemTypeButton
         dollComponentData = ItemBarManager.Instance.dollSaveData.outsightShirt;
     }
 
+    protected override void Choose()
+    {
+        base.Choose();
+
+        var brightness = targetRenderer.material.GetFloat(DataKey.OutlineAlpha);
+        var saturation = targetRenderer.material.GetFloat(DataKey.GreyscaleBlend);
+        var hue = targetRenderer.material.GetFloat(DataKey.HsvShift);
+
+        if (brightness != 0f || saturation != 0f || hue != 0f)
+        {
+            ItemBarManager.Instance.chooseBSHPanel.LoadValue(brightness, saturation, hue);
+        }
+    }
+
     public override void WearItem(ItemData itemData)
     {
         base.WearItem(itemData);

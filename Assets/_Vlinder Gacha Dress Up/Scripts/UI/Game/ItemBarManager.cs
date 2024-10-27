@@ -80,7 +80,6 @@ public class ItemBarManager : Singleton<ItemBarManager>
         if (currentItemTypeButton.canChangeBSH)
         {
             chooseBSHPanel.gameObject.SetActive(true);
-            chooseBSHPanel.LoadRenderer(currentItemTypeButton.GetRenderer());
             chooseBSHPanel.ResetValue();
             UIManager.Instance.saveButton.gameObject.SetActive(false);
             UIManager.Instance.takeOffButton.gameObject.SetActive(false);
