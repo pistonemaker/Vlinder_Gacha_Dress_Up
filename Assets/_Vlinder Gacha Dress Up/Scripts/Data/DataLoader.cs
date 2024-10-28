@@ -13,7 +13,6 @@ public class DataLoader : Singleton<DataLoader>
         base.Awake();
 
         GetSpriteData();
-
         float startTime = Time.realtimeSinceStartup;
         LoadData();
         float endTime = Time.realtimeSinceStartup;
@@ -58,18 +57,15 @@ public class DataLoader : Singleton<DataLoader>
         foreach (string folderName in itemFolders)
         {
             Sprite[] spritesInFolder = Resources.LoadAll<Sprite>($"UI Thumb/{folderName}");
-
             int index = 0;
+            
             foreach (Sprite sprite in spritesInFolder)
             {
                 if (sprite != null)
                 {
                     ItemData itemData = new ItemData();
-                    //FindSuitableSprites(sprite, itemData, index);
                     FindSuitableSpritesInDict(sprite, itemData);
-
                     EItemType eItemType = GetEItemType(folderName);
-
                     itemData.itemtype = eItemType;
                     itemData.id = index++;
 
