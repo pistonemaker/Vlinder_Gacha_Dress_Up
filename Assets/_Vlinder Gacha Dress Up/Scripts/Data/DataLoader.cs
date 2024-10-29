@@ -1,19 +1,20 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class DataLoader : Singleton<DataLoader>
 {
     public GameData gameData;
-    public List<Sprite> sprites;
     public Dictionary<string, Sprite> spriteDictionary = new Dictionary<string, Sprite>();
 
     protected override void Awake()
     {
         base.Awake();
 
-        GetSpriteData();
         float startTime = Time.realtimeSinceStartup;
+        GetSpriteData();
         LoadData();
         float endTime = Time.realtimeSinceStartup;
         float loadingDuration = endTime - startTime;
@@ -22,21 +23,33 @@ public class DataLoader : Singleton<DataLoader>
 
     private void GetSpriteData()
     {
-        if (sprites.Count > 0)
-        {
-            return;
-        }
-
-        Sprite[] loadedSprites = Resources.LoadAll<Sprite>("Item");
-
-        foreach (Sprite sprite in loadedSprites)
+        Addressables.LoadAssetsAsync<Sprite>("Assets/_Vlinder Gacha Dress Up/Addressables/Item", sprite =>
         {
             if (sprite != null)
             {
-                sprites.Add(sprite);
                 spriteDictionary.Add(sprite.name, sprite);
             }
-        }
+        }).Completed += handle =>
+        {
+            if (handle.Status == AsyncOperationStatus.Succeeded)
+            {
+                Debug.Log("All Item sprites loaded successfully.");
+            }
+            else
+            {
+                Debug.LogError("Failed to load Item sprites from Addressables.");
+            }
+        };
+
+        // Sprite[] loadedSprites = Resources.LoadAll<Sprite>("Item");
+        //
+        // foreach (Sprite sprite in loadedSprites)
+        // {
+        //     if (sprite != null)
+        //     {
+        //         spriteDictionary.Add(sprite.name, sprite);
+        //     }
+        // }
     }
 
     private void LoadData()
@@ -53,13 +66,11 @@ public class DataLoader : Singleton<DataLoader>
             "_Hat", "_Insight Shirt", "_Long Dress", "_Mouth", "_Necklace", "_Outsight Shirt",
             "_Shoes", "_Short Dress", "_Socks", "_Trousers", "_Wing"
         };
-
+        
         foreach (string folderName in itemFolders)
         {
-            Sprite[] spritesInFolder = Resources.LoadAll<Sprite>($"UI Thumb/{folderName}");
-            int index = 0;
-            
-            foreach (Sprite sprite in spritesInFolder)
+            Addressables.LoadAssetsAsync<Sprite>($"Assets/_Vlinder Gacha Dress Up/Addressables/UI Thumb/{folderName}", 
+                sprite =>
             {
                 if (sprite != null)
                 {
@@ -67,7 +78,6 @@ public class DataLoader : Singleton<DataLoader>
                     FindSuitableSpritesInDict(sprite, itemData);
                     EItemType eItemType = GetEItemType(folderName);
                     itemData.itemtype = eItemType;
-                    itemData.id = index++;
 
                     if (!gameData.data.ContainsKey(eItemType))
                     {
@@ -76,48 +86,39 @@ public class DataLoader : Singleton<DataLoader>
 
                     gameData.data[eItemType].itemdatas.Add(itemData);
                 }
-            }
-        }
-    }
-
-    private void FindSuitableSprites(Sprite sprite, ItemData itemData, int index)
-    {
-        if (sprite.name == "0None")
-        {
-            itemData.thumbSprite = sprite;
-            itemData.isLight = false;
-            itemData.isColor = false;
-            return;
-        }
-
-        if (sprite.name == "0Noneee")
-        {
-            itemData.thumbSprite = sprite;
-            itemData.isLight = false;
-            itemData.isColor = false;
-            return;
-        }
-
-        for (int i = index; i < sprites.Count; i++)
-        {
-            if (sprites[i].name == sprite.name)
+            }).Completed += handle =>
             {
-                itemData.sprite = sprites[i];
-                itemData.thumbSprite = sprite;
-            }
-
-            if (sprites[i].name == sprite.name + "light")
-            {
-                itemData.isLight = true;
-                itemData.lightSprite = sprites[i];
-            }
-
-            if (sprites[i].name == sprite.name + "color")
-            {
-                itemData.isColor = true;
-                itemData.colorSprite = sprites[i];
-                return;
-            }
+                if (handle.Status == AsyncOperationStatus.Succeeded)
+                {
+                    Debug.Log($"All sprites in folder {folderName} loaded successfully.");
+                }
+                else
+                {
+                    Debug.LogError($"Failed to load sprites from Addressables in folder {folderName}.");
+                }
+            };
+            
+            // Sprite[] spritesInFolder = Resources.LoadAll<Sprite>($"UI Thumb/{folderName}");
+            // int index = 0;
+            //
+            // foreach (Sprite sprite in spritesInFolder)
+            // {
+            //     if (sprite != null)
+            //     {
+            //         ItemData itemData = new ItemData();
+            //         FindSuitableSpritesInDict(sprite, itemData);
+            //         EItemType eItemType = GetEItemType(folderName);
+            //         itemData.itemtype = eItemType;
+            //         itemData.id = index++;
+            //
+            //         if (!gameData.data.ContainsKey(eItemType))
+            //         {
+            //             gameData.data.Add(eItemType, new ItemTypeData());
+            //         }
+            //
+            //         gameData.data[eItemType].itemdatas.Add(itemData);
+            //     }
+            // }
         }
     }
 
