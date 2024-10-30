@@ -20,7 +20,6 @@ namespace Com.TheFallenGames.OSA.Demos.SelectAndDelete
             var adapter = _Adapters[0];
             //LoadData(eItemType);
             //adapter.LazyData = new LazyDataHelper<ItemData>(adapter, CreateNewModel);
-            adapter.Init();
             //adapter.LazyData.ResetItems(allItemsLoaded.Count);
         }
 
@@ -44,7 +43,7 @@ namespace Com.TheFallenGames.OSA.Demos.SelectAndDelete
         public void RefreshGrid()
         {
             //_Adapters[0].LazyData.ResetItems(allItemsLoaded.Count);
-            _Adapters[0].Refresh();
+            //_Adapters[0].Refresh();
         }
 
         protected override void InitDrawer()
@@ -59,8 +58,6 @@ namespace Com.TheFallenGames.OSA.Demos.SelectAndDelete
 
             if (adapter.CellsCount == 0)
                 return;
-
-            //adapter.LazyData.List.Remove(index, 1);
         }
 
         protected override void OnItemCountChangeRequested(ItemScrollAdapter adapter, int newCount)

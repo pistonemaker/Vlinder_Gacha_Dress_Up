@@ -16,7 +16,8 @@ public class Background : ItemTypeButton
         base.SaveData();
         if (chooseItemSprite == null)
         {
-            dollComponentData.sprite = GameManager.Instance.gameData.data[eItemType].itemdatas[0].sprite;
+            // dollComponentData.sprite = GameManager.Instance.gameData.data[eItemType].itemdatas[0].sprite;
+            dollComponentData.sprite = Doll.Instance.background.sprite;
         }
     }
 }

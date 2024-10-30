@@ -302,10 +302,10 @@ MonoBehaviour:
     itemtype: 0
     isColor: 0
     isLight: 0
-    sprite: {fileID: 0}
-    thumbSprite: {fileID: 0}
-    colorSprite: {fileID: 0}
-    lightSprite: {fileID: 0}
+    sprite: 
+    thumbSprite: 
+    colorSprite: 
+    lightSprite: 
   canNullValue: 0
   canChangeRGB: 0
   canChangeBSH: 0
@@ -1558,10 +1558,10 @@ MonoBehaviour:
     itemtype: 0
     isColor: 0
     isLight: 0
-    sprite: {fileID: 0}
-    thumbSprite: {fileID: 0}
-    colorSprite: {fileID: 0}
-    lightSprite: {fileID: 0}
+    sprite: 
+    thumbSprite: 
+    colorSprite: 
+    lightSprite: 
   canNullValue: 0
   canChangeRGB: 0
   canChangeBSH: 0
@@ -2097,10 +2097,10 @@ MonoBehaviour:
     itemtype: 0
     isColor: 0
     isLight: 0
-    sprite: {fileID: 0}
-    thumbSprite: {fileID: 0}
-    colorSprite: {fileID: 0}
-    lightSprite: {fileID: 0}
+    sprite: 
+    thumbSprite: 
+    colorSprite: 
+    lightSprite: 
   canNullValue: 0
   canChangeRGB: 0
   canChangeBSH: 0
@@ -2489,10 +2489,10 @@ MonoBehaviour:
     itemtype: 0
     isColor: 0
     isLight: 0
-    sprite: {fileID: 0}
-    thumbSprite: {fileID: 0}
-    colorSprite: {fileID: 0}
-    lightSprite: {fileID: 0}
+    sprite: 
+    thumbSprite: 
+    colorSprite: 
+    lightSprite: 
   canNullValue: 0
   canChangeRGB: 0
   canChangeBSH: 0
@@ -3470,10 +3470,10 @@ MonoBehaviour:
     itemtype: 0
     isColor: 0
     isLight: 0
-    sprite: {fileID: 0}
-    thumbSprite: {fileID: 0}
-    colorSprite: {fileID: 0}
-    lightSprite: {fileID: 0}
+    sprite: 
+    thumbSprite: 
+    colorSprite: 
+    lightSprite: 
   canNullValue: 0
   canChangeRGB: 0
   canChangeBSH: 0
@@ -3741,10 +3741,10 @@ MonoBehaviour:
     itemtype: 0
     isColor: 0
     isLight: 0
-    sprite: {fileID: 0}
-    thumbSprite: {fileID: 0}
-    colorSprite: {fileID: 0}
-    lightSprite: {fileID: 0}
+    sprite: 
+    thumbSprite: 
+    colorSprite: 
+    lightSprite: 
   canNullValue: 0
   canChangeRGB: 0
   canChangeBSH: 0
@@ -3930,7 +3930,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b52493f4f3a34b82b38ef2a57e2ab6f4, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5000,10 +5000,10 @@ MonoBehaviour:
     itemtype: 0
     isColor: 0
     isLight: 0
-    sprite: {fileID: 0}
-    thumbSprite: {fileID: 0}
-    colorSprite: {fileID: 0}
-    lightSprite: {fileID: 0}
+    sprite: 
+    thumbSprite: 
+    colorSprite: 
+    lightSprite: 
   canNullValue: 0
   canChangeRGB: 0
   canChangeBSH: 0
@@ -5709,10 +5709,10 @@ MonoBehaviour:
     itemtype: 0
     isColor: 0
     isLight: 0
-    sprite: {fileID: 0}
-    thumbSprite: {fileID: 0}
-    colorSprite: {fileID: 0}
-    lightSprite: {fileID: 0}
+    sprite: 
+    thumbSprite: 
+    colorSprite: 
+    lightSprite: 
   canNullValue: 0
   canChangeRGB: 0
   canChangeBSH: 0
@@ -9348,10 +9348,10 @@ MonoBehaviour:
     itemtype: 0
     isColor: 0
     isLight: 0
-    sprite: {fileID: 0}
-    thumbSprite: {fileID: 0}
-    colorSprite: {fileID: 0}
-    lightSprite: {fileID: 0}
+    sprite: 
+    thumbSprite: 
+    colorSprite: 
+    lightSprite: 
   canNullValue: 0
   canChangeRGB: 0
   canChangeBSH: 0
@@ -9735,7 +9735,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 31baacefeadc4e6aa1bfc3c3dc9b34ce, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10015,10 +10015,10 @@ MonoBehaviour:
     itemtype: 0
     isColor: 0
     isLight: 0
-    sprite: {fileID: 0}
-    thumbSprite: {fileID: 0}
-    colorSprite: {fileID: 0}
-    lightSprite: {fileID: 0}
+    sprite: 
+    thumbSprite: 
+    colorSprite: 
+    lightSprite: 
   canNullValue: 0
   canChangeRGB: 0
   canChangeBSH: 0
@@ -10165,10 +10165,10 @@ MonoBehaviour:
     itemtype: 0
     isColor: 0
     isLight: 0
-    sprite: {fileID: 0}
-    thumbSprite: {fileID: 0}
-    colorSprite: {fileID: 0}
-    lightSprite: {fileID: 0}
+    sprite: 
+    thumbSprite: 
+    colorSprite: 
+    lightSprite: 
   canNullValue: 0
   canChangeRGB: 0
   canChangeBSH: 0
@@ -10479,10 +10479,10 @@ MonoBehaviour:
     itemtype: 0
     isColor: 0
     isLight: 0
-    sprite: {fileID: 0}
-    thumbSprite: {fileID: 0}
-    colorSprite: {fileID: 0}
-    lightSprite: {fileID: 0}
+    sprite: 
+    thumbSprite: 
+    colorSprite: 
+    lightSprite: 
   canNullValue: 0
   canChangeRGB: 0
   canChangeBSH: 0
@@ -10921,10 +10921,10 @@ MonoBehaviour:
     itemtype: 0
     isColor: 0
     isLight: 0
-    sprite: {fileID: 0}
-    thumbSprite: {fileID: 0}
-    colorSprite: {fileID: 0}
-    lightSprite: {fileID: 0}
+    sprite: 
+    thumbSprite: 
+    colorSprite: 
+    lightSprite: 
   canNullValue: 0
   canChangeRGB: 0
   canChangeBSH: 0
@@ -11473,10 +11473,10 @@ MonoBehaviour:
     itemtype: 0
     isColor: 0
     isLight: 0
-    sprite: {fileID: 0}
-    thumbSprite: {fileID: 0}
-    colorSprite: {fileID: 0}
-    lightSprite: {fileID: 0}
+    sprite: 
+    thumbSprite: 
+    colorSprite: 
+    lightSprite: 
   canNullValue: 0
   canChangeRGB: 0
   canChangeBSH: 0
@@ -11976,10 +11976,10 @@ MonoBehaviour:
     itemtype: 0
     isColor: 0
     isLight: 0
-    sprite: {fileID: 0}
-    thumbSprite: {fileID: 0}
-    colorSprite: {fileID: 0}
-    lightSprite: {fileID: 0}
+    sprite: 
+    thumbSprite: 
+    colorSprite: 
+    lightSprite: 
   canNullValue: 0
   canChangeRGB: 0
   canChangeBSH: 0
@@ -14778,10 +14778,10 @@ MonoBehaviour:
     itemtype: 0
     isColor: 0
     isLight: 0
-    sprite: {fileID: 0}
-    thumbSprite: {fileID: 0}
-    colorSprite: {fileID: 0}
-    lightSprite: {fileID: 0}
+    sprite: 
+    thumbSprite: 
+    colorSprite: 
+    lightSprite: 
   canNullValue: 0
   canChangeRGB: 0
   canChangeBSH: 0
@@ -16720,10 +16720,10 @@ MonoBehaviour:
     itemtype: 0
     isColor: 0
     isLight: 0
-    sprite: {fileID: 0}
-    thumbSprite: {fileID: 0}
-    colorSprite: {fileID: 0}
-    lightSprite: {fileID: 0}
+    sprite: 
+    thumbSprite: 
+    colorSprite: 
+    lightSprite: 
   canNullValue: 0
   canChangeRGB: 0
   canChangeBSH: 0
@@ -16870,10 +16870,10 @@ MonoBehaviour:
     itemtype: 0
     isColor: 0
     isLight: 0
-    sprite: {fileID: 0}
-    thumbSprite: {fileID: 0}
-    colorSprite: {fileID: 0}
-    lightSprite: {fileID: 0}
+    sprite: 
+    thumbSprite: 
+    colorSprite: 
+    lightSprite: 
   canNullValue: 0
   canChangeRGB: 0
   canChangeBSH: 0
@@ -18461,10 +18461,10 @@ MonoBehaviour:
     itemtype: 0
     isColor: 0
     isLight: 0
-    sprite: {fileID: 0}
-    thumbSprite: {fileID: 0}
-    colorSprite: {fileID: 0}
-    lightSprite: {fileID: 0}
+    sprite: 
+    thumbSprite: 
+    colorSprite: 
+    lightSprite: 
   canNullValue: 0
   canChangeRGB: 0
   canChangeBSH: 0
@@ -18881,6 +18881,7 @@ MonoBehaviour:
   frontHair: {fileID: 0}
   behindHair: {fileID: 0}
   itemScrollAdapter: {fileID: 793847044}
+  sceneEntry: {fileID: 1804370066}
   chooseBSHPanel: {fileID: 2116109869}
   chooseColorPanel: {fileID: 1906205777}
   editColorPopup: {fileID: 2100136496}

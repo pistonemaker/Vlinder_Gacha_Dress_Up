@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
 
 public class ItemTypeButton : MonoBehaviour
@@ -6,7 +8,7 @@ public class ItemTypeButton : MonoBehaviour
     [SerializeField] protected EItemType eItemType;
     [SerializeField] protected Sprite chooseItemSprite;
     [SerializeField] protected SpriteRenderer targetRenderer;
-    public ItemData curItemData;
+    public ItemDataToJson curItemData;
     public bool canNullValue;
     public bool canChangeRGB;
     public bool canChangeBSH;
@@ -45,7 +47,7 @@ public class ItemTypeButton : MonoBehaviour
         ItemBarManager.Instance.chooseColorPanel.gameObject.SetActive(false);
         UIManager.Instance.saveButton.gameObject.SetActive(true);
         UIManager.Instance.takeOffButton.gameObject.SetActive(true);
-        
+
         if (canChangeBSH)
         {
             if (PlayerPrefs.GetInt(Changer.GetDataKey(eItemType)) > 0)
@@ -61,6 +63,19 @@ public class ItemTypeButton : MonoBehaviour
         else
         {
             ItemBarManager.Instance.chooseBSHPanel.gameObject.SetActive(false);
+        }
+
+        if (canChangeRGB)
+        {
+            ItemBarManager.Instance.chooseColorPanel.gameObject.SetActive(true);
+            UIManager.Instance.saveButton.gameObject.SetActive(false);
+            UIManager.Instance.takeOffButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            ItemBarManager.Instance.chooseColorPanel.gameObject.SetActive(false);
+            UIManager.Instance.saveButton.gameObject.SetActive(true);
+            UIManager.Instance.takeOffButton.gameObject.SetActive(true);
         }
     }
 
@@ -79,19 +94,19 @@ public class ItemTypeButton : MonoBehaviour
         return targetRenderer;
     }
 
-    public virtual void WearItem(ItemData itemData)
+    public virtual void WearItem(ItemDataToJson itemData)
     {
         curItemData = itemData;
-        
+
         if (itemData.itemtype == eItemType)
         {
-            if (targetRenderer.sprite == itemData.sprite && canNullValue)
+            if (targetRenderer.sprite != null && targetRenderer.sprite.name == Changer.GetSpriteNameFromPath(itemData.sprite) && canNullValue)
             {
                 targetRenderer.sprite = null;
                 Doll.Instance.hairLight.sprite = null;
                 this.PostEvent(EventID.On_DisSelect_Item, curItemData.id);
             }
-            else if (targetRenderer.sprite == itemData.colorSprite && itemData.colorSprite != null)
+            else if (targetRenderer.sprite != null && targetRenderer.sprite.name == Changer.GetSpriteNameFromPath(itemData.colorSprite) && itemData.colorSprite != null)
             {
                 targetRenderer.sprite = null;
                 Doll.Instance.hairLight.sprite = null;
@@ -101,20 +116,28 @@ public class ItemTypeButton : MonoBehaviour
             {
                 if (itemData.isColor)
                 {
-                    targetRenderer.sprite = chooseItemSprite = itemData.colorSprite;
+                    var handle = Addressables.LoadAssetAsync<Sprite>(itemData.colorSprite);
+                    handle.Completed += (AsyncOperationHandle<Sprite> task) => { targetRenderer.sprite = task.Result; };
                     Doll.Instance.hairLight.sprite = null;
-                    
+
                     if (ItemBarManager.Instance.isApplyColor)
                     {
-                        targetRenderer.sprite = chooseItemSprite = itemData.sprite;
+                        var handle2 = Addressables.LoadAssetAsync<Sprite>(itemData.sprite);
+                        handle2.Completed += (AsyncOperationHandle<Sprite> task) => { targetRenderer.sprite = task.Result; };
                     }
                 }
                 else
                 {
-                    targetRenderer.sprite = chooseItemSprite = itemData.sprite;
+                    if (itemData.sprite != "")
+                    {
+                        var handle = Addressables.LoadAssetAsync<Sprite>(itemData.sprite);
+                        handle.Completed += (AsyncOperationHandle<Sprite> task) => { targetRenderer.sprite = task.Result; };
+                    }
+
                     if (itemData.isLight)
                     {
-                        Doll.Instance.hairLight.sprite = itemData.lightSprite;
+                        var handle2 = Addressables.LoadAssetAsync<Sprite>(itemData.lightSprite);
+                        handle2.Completed += (AsyncOperationHandle<Sprite> task) => { Doll.Instance.hairLight.sprite = task.Result; };
                     }
                     else
                     {
@@ -138,13 +161,15 @@ public class ItemTypeButton : MonoBehaviour
     {
         if (targetRenderer.sprite != null)
         {
-            if (targetRenderer.sprite == curItemData.sprite)
+            if (targetRenderer.sprite.name == Changer.GetSpriteNameFromPath(curItemData.sprite))
             {
                 targetRenderer.color = color;
             }
             else
             {
-                targetRenderer.sprite = curItemData.sprite;
+                var handle = Addressables.LoadAssetAsync<Sprite>(curItemData.sprite);
+                handle.Completed += (AsyncOperationHandle<Sprite> task) => { targetRenderer.sprite = task.Result; };
+
                 targetRenderer.color = color;
             }
         }
@@ -154,7 +179,9 @@ public class ItemTypeButton : MonoBehaviour
     {
         if (curItemData.isColor)
         {
-            targetRenderer.sprite = curItemData.colorSprite;
+            var handle = Addressables.LoadAssetAsync<Sprite>(curItemData.colorSprite);
+            handle.Completed += (AsyncOperationHandle<Sprite> task) => { targetRenderer.sprite = task.Result; };
+
             targetRenderer.color = Color.white;
         }
         else

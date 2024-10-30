@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
 
 public class ChooseColorPanel : BasePanel
@@ -9,6 +11,8 @@ public class ChooseColorPanel : BasePanel
     public Button editColorButton;
     public Button clearColorButton;
     public List<Button> colorButtons;
+    public Sprite sprite1;
+    public Sprite sprite2;
 
     protected override void LoadButtonAndImage()
     {
@@ -37,10 +41,8 @@ public class ChooseColorPanel : BasePanel
 
     private void ShowEditColorPopup()
     {
-        var sprite1 = ItemBarManager.Instance.frontHairButton.curItemData.sprite;
-        var sprite2 = ItemBarManager.Instance.behindHairButton.curItemData.sprite;
         var color = ItemBarManager.Instance.currentItemTypeButton.GetCurSpriteRenderer().color;
-        ItemBarManager.Instance.editColorPopup.SetEditImage(sprite1, sprite2, color);
+        ItemBarManager.Instance.editColorPopup.SetEditImage(Doll.Instance.frontHair.sprite, Doll.Instance.behindHair.sprite, color);
         ItemBarManager.Instance.editColorPopup.gameObject.SetActive(true);
     }
 

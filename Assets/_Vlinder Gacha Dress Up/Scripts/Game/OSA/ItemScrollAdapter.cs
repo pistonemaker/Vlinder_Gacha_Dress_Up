@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Com.TheFallenGames.OSA.Core;
 using Com.TheFallenGames.OSA.CustomAdapters.GridView;
-using Com.TheFallenGames.OSA.DataHelpers;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -20,6 +19,7 @@ public class ItemScrollAdapter : GridAdapter<MyGridParams, MyCellViewsHolder>
         var cancel = _Params.Animation.Cancel;
         cancel.UserAnimations.OnCountChanges = false;
         cancel.UserAnimations.OnSizeChanges = false;
+        Init();
         LoadData(EItemType.Body);
     }
 
@@ -31,8 +31,8 @@ public class ItemScrollAdapter : GridAdapter<MyGridParams, MyCellViewsHolder>
             return;
     }
 
-    public override void ChangeItemsCount(ItemCountChangeMode changeMode, int cellsCount, int indexIfAppendingOrRemoving = -1, bool contentPanelEndEdgeStationary = false,
-        bool keepVelocity = false)
+    public override void ChangeItemsCount(ItemCountChangeMode changeMode, int cellsCount, int indexIfAppendingOrRemoving = -1, 
+        bool contentPanelEndEdgeStationary = false, bool keepVelocity = false)
     {
         base.ChangeItemsCount(changeMode, cellsCount, indexIfAppendingOrRemoving, contentPanelEndEdgeStationary, keepVelocity);
     }
@@ -65,6 +65,8 @@ public class ItemScrollAdapter : GridAdapter<MyGridParams, MyCellViewsHolder>
         eItemType = eitemType;
         allItemsLoaded.Clear();
         allItemsLoaded.AddRange(JsonLoader.Instance.jsonData[eItemType].itemdatas);
+        ResetItems(allItemsLoaded.Count);
+        Refresh();
     }
 
     public void LoadDataAccessories()
@@ -75,6 +77,8 @@ public class ItemScrollAdapter : GridAdapter<MyGridParams, MyCellViewsHolder>
         allItemsLoaded.AddRange(JsonLoader.Instance.jsonData[EItemType.Nose].itemdatas);
         allItemsLoaded.AddRange(JsonLoader.Instance.jsonData[EItemType.Earrings].itemdatas);
         allItemsLoaded.AddRange(JsonLoader.Instance.jsonData[EItemType.Glass].itemdatas);
+        ResetItems(allItemsLoaded.Count);
+        Refresh();
     }
 }
 

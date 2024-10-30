@@ -18,15 +18,11 @@ MonoBehaviour:
   m_GUID: 02e936e686c0404489851c6bb218875c
   m_SerializeEntries:
   - m_GUID: 79e13670e351fc944af1c654d3c5a3b1
-    m_Address: Assets/Sprites Load/Item
+    m_Address: Assets/_Vlinder Gacha Dress Up/Sprites Load/Item
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: ca260e38463814d12b7ca28c719daa48
-    m_Address: Assets/_Vlinder Gacha Dress Up/Addressables/UI Thumb
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: aa488180622604ba79c962cf987a4ec6
-    m_Address: Assets/_Vlinder Gacha Dress Up/Addressables/UI Thumb/_Background
+    m_Address: Assets/_Vlinder Gacha Dress Up/Sprites Load/UI Thumb
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

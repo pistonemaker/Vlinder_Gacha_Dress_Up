@@ -276,7 +276,6 @@ namespace Com.TheFallenGames.OSA.CustomAdapters.GridView
 
 		public virtual int GetGroupIndex(int cellIndex)
 		{
-			//_CurrentUsedNumCellsPerGroup = 5;
 			return cellIndex / _CurrentUsedNumCellsPerGroup; 
 		}
 

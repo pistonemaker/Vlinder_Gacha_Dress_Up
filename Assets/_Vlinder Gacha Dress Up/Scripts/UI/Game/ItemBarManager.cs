@@ -8,6 +8,7 @@ public class ItemBarManager : Singleton<ItemBarManager>
     public SpriteRenderer frontHair;
     public SpriteRenderer behindHair;
     public ItemScrollAdapter itemScrollAdapter;
+    public SceneEntry sceneEntry;
     public ChooseBSHPanel chooseBSHPanel;
     public ChooseColorPanel chooseColorPanel;
     public EditColorPopup editColorPopup;
@@ -28,7 +29,7 @@ public class ItemBarManager : Singleton<ItemBarManager>
         frontHair = Doll.Instance.frontHair;
         behindHair = Doll.Instance.behindHair;
         itemTypeButtons = GetComponentsInChildren<ItemTypeButton>().ToList();
-        this.RegisterListener(EventID.On_Wear_Item, param => WearItem((ItemData)param));
+        this.RegisterListener(EventID.On_Wear_Item, param => WearItem((ItemDataToJson)param));
 
         EventDispatcher.Instance.RegisterListener(EventID.On_Save_Game, OnSaveGame);
         chooseBSHPanel.gameObject.SetActive(false);
@@ -38,7 +39,7 @@ public class ItemBarManager : Singleton<ItemBarManager>
 
     private void OnDisable()
     {
-        this.RemoveListener(EventID.On_Wear_Item, param => WearItem((ItemData)param));
+        this.RemoveListener(EventID.On_Wear_Item, param => WearItem((ItemDataToJson)param));
         EventDispatcher.Instance.RemoveListener(EventID.On_Save_Game, OnSaveGame);
     }
 
@@ -57,16 +58,15 @@ public class ItemBarManager : Singleton<ItemBarManager>
     {
         itemScrollAdapter.eItemType = eItemType;
         itemScrollAdapter.LoadData(eItemType);
-        //itemScrollAdapter.RefreshGrid();
+        //sceneEntry.RefreshGrid();
     }
 
     public void LoadOSAFaceAccessories()
     {
         itemScrollAdapter.LoadDataAccessories();
-        //sceneEntry.RefreshGrid();
     }
 
-    private void WearItem(ItemData data)
+    private void WearItem(ItemDataToJson data)
     {
         currentItemTypeButton.WearItem(data);
 

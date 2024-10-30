@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class FaceAccessories : ItemTypeButton
 {
@@ -21,7 +23,7 @@ public class FaceAccessories : ItemTypeButton
         ItemBarManager.Instance.LoadOSAFaceAccessories();
     }
 
-    public override void WearItem(ItemData data)
+    public override void WearItem(ItemDataToJson data)
     {
         WearItemAccessory(data, EItemType.Birthmark, Doll.Instance.birthmark);
         WearItemAccessory(data, EItemType.Earrings, Doll.Instance.earrings);
@@ -30,18 +32,23 @@ public class FaceAccessories : ItemTypeButton
         WearItemAccessory(data, EItemType.Glass, Doll.Instance.glass);
     }
 
-    private void WearItemAccessory(ItemData data, EItemType eItemTypeCheck, SpriteRenderer targetRender)
+    private void WearItemAccessory(ItemDataToJson data, EItemType eItemTypeCheck, SpriteRenderer targetRender)
     {
         if (data.itemtype == eItemTypeCheck)
         {
-            if (targetRender.sprite == data.sprite)
+            if (targetRender.sprite != null && targetRender.sprite.name == Changer.GetSpriteNameFromPath(data.sprite))
             {
                 targetRender.sprite = null;
                 this.PostEvent(EventID.On_DisSelect_Accessory, data);
             }
             else
             {
-                targetRender.sprite = data.sprite;
+                var handle = Addressables.LoadAssetAsync<Sprite>(data.sprite);
+                handle.Completed += (AsyncOperationHandle<Sprite> task) =>
+                {
+                    targetRender.sprite = task.Result;
+                };
+                
                 var key = ChangeItemTypeToData(data.itemtype);
                 StartCoroutine(StarSpawner.Instance.SpawnStar());
                 PlayerPrefs.SetInt(key, data.id);

@@ -1,5 +1,18 @@
+using System.IO;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+
 public static class Changer
 {
+    public static string GetSpriteNameFromPath(string path)
+    {
+        path = Path.GetFileNameWithoutExtension(path);
+        int lastSlashIndex = path.LastIndexOf('/') + 1;
+        string spriteName = path.Substring(lastSlashIndex);
+        return spriteName;
+    }
+    
     public static string GetDataKey(EItemType itemType)
     {
         switch (itemType)

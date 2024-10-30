@@ -387,10 +387,6 @@ public class AdmobAds : Singleton<AdmobAds>
         {
             ShowOpenAppAd();
         }
-        else
-        {
-            Debug.LogError("Can not show App Open Ad " + state);
-        }
     }
 
     private void RegisterEventHandlers(AppOpenAd ad)

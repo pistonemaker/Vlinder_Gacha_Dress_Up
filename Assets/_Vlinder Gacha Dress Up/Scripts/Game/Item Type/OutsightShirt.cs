@@ -27,7 +27,7 @@ public class OutsightShirt : ItemTypeButton
         }
     }
 
-    public override void WearItem(ItemData itemData)
+    public override void WearItem(ItemDataToJson itemData)
     {
         base.WearItem(itemData);
 

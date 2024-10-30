@@ -20,7 +20,7 @@ public class ItemButton : MonoBehaviour
 
         button.onClick.AddListener(OnClick_WearItem);
         onDisSelectItemDelegate = param => DisSelect((int)param);
-        onDisSelectAccessoryDelegate = param => DisSelectAccessory((ItemData)param);
+        onDisSelectAccessoryDelegate = param => DisSelectAccessory((ItemDataToJson)param);
         this.RegisterListener(EventID.On_DisSelect_Item, onDisSelectItemDelegate);
         this.RegisterListener(EventID.On_DisSelect_Accessory, onDisSelectAccessoryDelegate);
         this.RegisterListener(EventID.On_DisSelect_All_Accessory, CheckIfSelected);
@@ -78,7 +78,7 @@ public class ItemButton : MonoBehaviour
         }
     }
 
-    private void DisSelectAccessory(ItemData itemData)
+    private void DisSelectAccessory(ItemDataToJson itemData)
     {
         if (data.itemtype == itemData.itemtype)
         {

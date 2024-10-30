@@ -11,7 +11,7 @@ public class FrontHair : ItemTypeButton
         dollComponentData = ItemBarManager.Instance.dollSaveData.frontHair;
     }
 
-    public override void WearItem(ItemData itemData)
+    public override void WearItem(ItemDataToJson itemData)
     {
         base.WearItem(itemData);
         
