@@ -5,14 +5,17 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SPL.unity
     guid: 9266955f60c0e0a4baa7461b2e49905f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Game.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Save.unity
     guid: 8a57f8e84594efd4b82977bc77cdaf11
+  - enabled: 1
+    path: Assets/LevelPlay/Samples/UnityLevelPlaySample/Scenes/LevelPlaySample.unity
+    guid: bd1eb3e1953724de08fadd7cbbc6d358
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: f65fb70d89efccd4788fdf7600a2d53e, type: 2}

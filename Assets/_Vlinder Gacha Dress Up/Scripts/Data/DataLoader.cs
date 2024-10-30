@@ -24,6 +24,7 @@ public class DataLoader : Singleton<DataLoader>
 
     private void GetSpriteData()
     {
+#if UNITY_EDITOR
         string folderPath = "Assets/_Vlinder Gacha Dress Up/Sprites Load/Item";
         string[] filePaths = Directory.GetFiles(folderPath, "*.png");
 
@@ -35,6 +36,7 @@ public class DataLoader : Singleton<DataLoader>
                 spriteDictionary[sprite.name] = sprite;
             }
         }
+#endif
 
         // Sprite[] loadedSprites = Resources.LoadAll<Sprite>("Item");
         //
@@ -61,7 +63,7 @@ public class DataLoader : Singleton<DataLoader>
             "_Hat", "_Insight Shirt", "_Long Dress", "_Mouth", "_Necklace", "_Outsight Shirt",
             "_Shoes", "_Short Dress", "_Socks", "_Trousers", "_Wing"
         };
-
+#if UNITY_EDITOR
         string uiThumbPath = "Assets/_Vlinder Gacha Dress Up/Sprites Load/UI Thumb";
 
         foreach (string folderName in itemFolders)
@@ -110,7 +112,6 @@ public class DataLoader : Singleton<DataLoader>
                     });
                 }
             }
-
             // Sprite[] spritesInFolder = Resources.LoadAll<Sprite>($"UI Thumb/{folderName}");
             // int index = 0;
             //
@@ -133,7 +134,7 @@ public class DataLoader : Singleton<DataLoader>
             //     }
             // }
         }
-
+#endif
         SaveDataToJson();
     }
 
