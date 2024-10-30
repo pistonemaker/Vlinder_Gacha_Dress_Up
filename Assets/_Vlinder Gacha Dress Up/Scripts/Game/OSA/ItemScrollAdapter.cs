@@ -1,13 +1,17 @@
 using System;
+using System.Collections.Generic;
 using Com.TheFallenGames.OSA.Core;
 using Com.TheFallenGames.OSA.CustomAdapters.GridView;
 using Com.TheFallenGames.OSA.DataHelpers;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
 
 public class ItemScrollAdapter : GridAdapter<MyGridParams, MyCellViewsHolder>
 {
-    public LazyDataHelper<ItemData> LazyData { get; set; }
+    public List<ItemDataToJson> allItemsLoaded = new List<ItemDataToJson>();
+    public EItemType eItemType = EItemType.Body;
 
     #region GridAdapter implementation
 
@@ -16,8 +20,7 @@ public class ItemScrollAdapter : GridAdapter<MyGridParams, MyCellViewsHolder>
         var cancel = _Params.Animation.Cancel;
         cancel.UserAnimations.OnCountChanges = false;
         cancel.UserAnimations.OnSizeChanges = false;
-        int count = _Params.Grid.MaxCellsPerGroup;
-        //Debug.Log(count);
+        LoadData(EItemType.Body);
     }
 
     protected override void Update()
@@ -36,7 +39,7 @@ public class ItemScrollAdapter : GridAdapter<MyGridParams, MyCellViewsHolder>
 
     public override void Refresh(bool contentPanelEndEdgeStationary = false /*ignored*/, bool keepVelocity = false)
     {
-        _CellsCount = LazyData.Count;
+        _CellsCount = allItemsLoaded.Count;
     }
 
     protected override void OnCellViewsHolderCreated(MyCellViewsHolder cellVH, CellGroupViewsHolder<MyCellViewsHolder> cellGroup)
@@ -46,7 +49,7 @@ public class ItemScrollAdapter : GridAdapter<MyGridParams, MyCellViewsHolder>
 
     protected override void UpdateCellViewsHolder(MyCellViewsHolder viewsHolder)
     {
-        var model = LazyData.GetOrCreate(viewsHolder.ItemIndex);
+        var model = allItemsLoaded[viewsHolder.ItemIndex];
         viewsHolder.UpdateViews(model);
     }
 
@@ -56,6 +59,23 @@ public class ItemScrollAdapter : GridAdapter<MyGridParams, MyCellViewsHolder>
     }
 
     #endregion
+    
+    public void LoadData(EItemType eitemType)
+    {
+        eItemType = eitemType;
+        allItemsLoaded.Clear();
+        allItemsLoaded.AddRange(JsonLoader.Instance.jsonData[eItemType].itemdatas);
+    }
+
+    public void LoadDataAccessories()
+    {
+        allItemsLoaded.Clear();
+        allItemsLoaded.AddRange(JsonLoader.Instance.jsonData[EItemType.Birthmark].itemdatas);
+        allItemsLoaded.AddRange(JsonLoader.Instance.jsonData[EItemType.Blush].itemdatas);
+        allItemsLoaded.AddRange(JsonLoader.Instance.jsonData[EItemType.Nose].itemdatas);
+        allItemsLoaded.AddRange(JsonLoader.Instance.jsonData[EItemType.Earrings].itemdatas);
+        allItemsLoaded.AddRange(JsonLoader.Instance.jsonData[EItemType.Glass].itemdatas);
+    }
 }
 
 [Serializable]
@@ -77,10 +97,15 @@ public class MyCellViewsHolder : CellViewsHolder
         itemButton.button = views.Find("Button").GetComponent<Button>();
     }
 
-    public void UpdateViews(ItemData data)
+    public void UpdateViews(ItemDataToJson data)
     {
         itemButton.data = data;
-        itemButton.thumb.sprite = data.thumbSprite;
+        var handle = Addressables.LoadAssetAsync<Sprite>(data.thumbSprite);
+        handle.Completed += (AsyncOperationHandle<Sprite> task) =>
+        {
+            itemButton.thumb.sprite = task.Result;
+        };
+        
         itemButton.index = ItemIndex;
         itemButton.CheckIfSelected(null);
     }

@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class Doll : Singleton<Doll>
 {
@@ -97,7 +99,16 @@ public class Doll : Singleton<Doll>
 
         if (sr != null)
         {
-            sr.sprite = GameManager.Instance.gameData.data[eItemType].itemdatas[itemIndex].sprite;
+            // sr.sprite = GameManager.Instance.gameData.data[eItemType].itemdatas[itemIndex].sprite;
+            var spritePath = JsonLoader.Instance.jsonData[eItemType].itemdatas[itemIndex].sprite;
+            if (spritePath != "")
+            {
+                var handle = Addressables.LoadAssetAsync<Sprite>(JsonLoader.Instance.jsonData[eItemType].itemdatas[itemIndex].sprite);
+                handle.Completed += (AsyncOperationHandle<Sprite> task) =>
+                {
+                    sr.sprite = task.Result;
+                };
+            }
         }
     }
 

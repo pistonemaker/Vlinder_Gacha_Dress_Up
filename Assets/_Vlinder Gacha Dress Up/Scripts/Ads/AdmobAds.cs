@@ -381,7 +381,7 @@ public class AdmobAds : Singleton<AdmobAds>
 
     private void OnAppStateChanged(AppState state)
     {
-        Debug.LogError("OnAppStateChanged " + state);
+        Debug.Log("OnAppStateChanged " + state);
         
         if (state == AppState.Foreground)
         {

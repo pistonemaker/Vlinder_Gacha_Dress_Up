@@ -3760,6 +3760,7 @@ GameObject:
   m_Component:
   - component: {fileID: 373474602}
   - component: {fileID: 373474601}
+  - component: {fileID: 373474603}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -3795,6 +3796,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &373474603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373474600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a978f91dccff7834f8d5d86faccadafc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameData: {fileID: 11400000, guid: 382cd02977c8ba043be93993b8367e59, type: 2}
+  sprites: []
 --- !u!1 &388618891
 GameObject:
   m_ObjectHideFlags: 0
@@ -7490,8 +7505,6 @@ MonoBehaviour:
       _CellWidthForceExpandInGroup: 0
       _CellHeightForceExpandInGroup: 0
       _PreserveCellAspectRatio: 0
-  allItemsLoaded: []
-  eItemType: 1
 --- !u!1 &817724768
 GameObject:
   m_ObjectHideFlags: 0
@@ -18880,7 +18893,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frontHair: {fileID: 0}
   behindHair: {fileID: 0}
-  itemScrollAdapter: {fileID: 793847044}
+  sceneEntry: {fileID: 1804370066}
   chooseBSHPanel: {fileID: 2116109869}
   chooseColorPanel: {fileID: 1906205777}
   editColorPopup: {fileID: 2100136496}

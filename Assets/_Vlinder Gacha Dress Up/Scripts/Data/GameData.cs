@@ -7,6 +7,7 @@ using UnityEngine;
 public class GameData : ScriptableObject
 {
     [ShowInInspector] public Dictionary<EItemType, ItemTypeData> data = new Dictionary<EItemType, ItemTypeData>();
+    [ShowInInspector] public Dictionary<EItemType, ItemTypeDataToJson> dataToJson = new Dictionary<EItemType, ItemTypeDataToJson>();
 }
 
 // List ảnh của loại đồ
@@ -14,6 +15,13 @@ public class GameData : ScriptableObject
 public class ItemTypeData
 {
     public List<ItemData> itemdatas = new List<ItemData>();
+}
+
+
+[Serializable]
+public class ItemTypeDataToJson
+{
+    public List<ItemDataToJson> itemdatas = new List<ItemDataToJson>();
 }
 
 // Data ảnh của đồ
@@ -30,6 +38,21 @@ public class ItemData
     [ShowIf("@isColor == true")] public Sprite colorSprite;
 
     [ShowIf("@isLight == true")] public Sprite lightSprite;
+}
+
+[Serializable]
+public class ItemDataToJson
+{
+    public int id;
+    public EItemType itemtype;
+    public bool isColor;
+    public bool isLight;
+    public string sprite;
+    public string thumbSprite;
+
+    [ShowIf("@isColor == true")] public string colorSprite;
+
+    [ShowIf("@isLight == true")] public string lightSprite;
 }
 
 // Loại đồ

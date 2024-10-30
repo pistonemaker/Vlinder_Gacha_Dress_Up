@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -23,23 +24,17 @@ public class DataLoader : Singleton<DataLoader>
 
     private void GetSpriteData()
     {
-        Addressables.LoadAssetsAsync<Sprite>("Assets/_Vlinder Gacha Dress Up/Addressables/Item", sprite =>
+        string folderPath = "Assets/_Vlinder Gacha Dress Up/Sprites Load/Item";
+        string[] filePaths = Directory.GetFiles(folderPath, "*.png");
+
+        foreach (string filePath in filePaths)
         {
+            Sprite sprite = AssetDatabase.LoadAssetAtPath<Sprite>(filePath);
             if (sprite != null)
             {
-                spriteDictionary.Add(sprite.name, sprite);
+                spriteDictionary[sprite.name] = sprite;
             }
-        }).Completed += handle =>
-        {
-            if (handle.Status == AsyncOperationStatus.Succeeded)
-            {
-                Debug.Log("All Item sprites loaded successfully.");
-            }
-            else
-            {
-                Debug.LogError("Failed to load Item sprites from Addressables.");
-            }
-        };
+        }
 
         // Sprite[] loadedSprites = Resources.LoadAll<Sprite>("Item");
         //
@@ -66,38 +61,56 @@ public class DataLoader : Singleton<DataLoader>
             "_Hat", "_Insight Shirt", "_Long Dress", "_Mouth", "_Necklace", "_Outsight Shirt",
             "_Shoes", "_Short Dress", "_Socks", "_Trousers", "_Wing"
         };
-        
+
+        string uiThumbPath = "Assets/_Vlinder Gacha Dress Up/Sprites Load/UI Thumb";
+
         foreach (string folderName in itemFolders)
         {
-            Addressables.LoadAssetsAsync<Sprite>($"Assets/_Vlinder Gacha Dress Up/Addressables/UI Thumb/{folderName}", 
-                sprite =>
+            string folderPath = uiThumbPath + "/" + folderName;
+            string[] filePaths = Directory.GetFiles(folderPath, "*.png");
+            int index = 0;
+
+            foreach (string filePath in filePaths)
             {
+                Sprite sprite = AssetDatabase.LoadAssetAtPath<Sprite>(filePath);
                 if (sprite != null)
                 {
                     ItemData itemData = new ItemData();
                     FindSuitableSpritesInDict(sprite, itemData);
                     EItemType eItemType = GetEItemType(folderName);
                     itemData.itemtype = eItemType;
+                    itemData.id = index++;
 
                     if (!gameData.data.ContainsKey(eItemType))
                     {
                         gameData.data.Add(eItemType, new ItemTypeData());
+                        gameData.dataToJson[eItemType] = new ItemTypeDataToJson();
                     }
 
                     gameData.data[eItemType].itemdatas.Add(itemData);
+
+                    string spritePath = spriteDictionary.ContainsKey(sprite.name) ? 
+                        "Assets/_Vlinder Gacha Dress Up/Sprites Load/Item/" + itemData.sprite?.name + ".png" : "";
+                    string colorspritePath = spriteDictionary.ContainsKey(sprite.name + "color") ? 
+                        "Assets/_Vlinder Gacha Dress Up/Sprites Load/Item/" + itemData.sprite?.name + "color.png" : "";
+                    string lightspritePath = spriteDictionary.ContainsKey(sprite.name + "light") ? 
+                        "Assets/_Vlinder Gacha Dress Up/Sprites Load/Item/" + itemData.sprite?.name + "light.png" : "";
+
+
+                    gameData.dataToJson[eItemType].itemdatas.Add(new ItemDataToJson
+                    {
+                        id = itemData.id,
+                        itemtype = itemData.itemtype,
+                        isColor = itemData.isColor,
+                        isLight = itemData.isLight,
+                        sprite = spritePath, 
+                        thumbSprite = filePath,
+                        colorSprite = colorspritePath,
+                        lightSprite = lightspritePath
+                    });
                 }
-            }).Completed += handle =>
-            {
-                if (handle.Status == AsyncOperationStatus.Succeeded)
-                {
-                    Debug.Log($"All sprites in folder {folderName} loaded successfully.");
-                }
-                else
-                {
-                    Debug.LogError($"Failed to load sprites from Addressables in folder {folderName}.");
-                }
-            };
-            
+            }
+
             // Sprite[] spritesInFolder = Resources.LoadAll<Sprite>($"UI Thumb/{folderName}");
             // int index = 0;
             //
@@ -120,6 +133,8 @@ public class DataLoader : Singleton<DataLoader>
             //     }
             // }
         }
+
+        SaveDataToJson();
     }
 
     private void FindSuitableSpritesInDict(Sprite sprite, ItemData itemData)
@@ -157,6 +172,39 @@ public class DataLoader : Singleton<DataLoader>
             itemData.isColor = true;
             itemData.colorSprite = spriteDictionary[sprite.name + "color"];
         }
+    }
+
+    private void SaveDataToJson()
+    {
+        Dictionary<EItemType, ItemTypeDataToJson> dataToSave = new Dictionary<EItemType, ItemTypeDataToJson>();
+
+        foreach (KeyValuePair<EItemType, ItemTypeDataToJson> entry in gameData.dataToJson)
+        {
+            ItemTypeDataToJson itemTypeDataToJson = new ItemTypeDataToJson();
+
+            foreach (ItemDataToJson itemData in entry.Value.itemdatas)
+            {
+                ItemDataToJson itemDataToJson = new ItemDataToJson
+                {
+                    id = itemData.id,
+                    itemtype = itemData.itemtype,
+                    isColor = itemData.isColor,
+                    isLight = itemData.isLight,
+                    sprite = itemData.sprite, 
+                    thumbSprite = itemData.thumbSprite.Replace("\\", "/"),
+                    colorSprite = itemData.colorSprite.Replace("\\", "/"),
+                    lightSprite = itemData.lightSprite.Replace("\\", "/") 
+                };
+
+                itemTypeDataToJson.itemdatas.Add(itemDataToJson);
+            }
+
+            dataToSave.Add(entry.Key, itemTypeDataToJson);
+        }
+
+        string json = JsonUtility.ToJson(new SerializationWrapper<EItemType, ItemTypeDataToJson>(dataToSave), true);
+        string filePath = "Assets/_Vlinder Gacha Dress Up/Scripts/Data/GameData.json";
+        File.WriteAllText(filePath, json);
     }
 
     private EItemType GetEItemType(string folderPath)
@@ -218,7 +266,24 @@ public class DataLoader : Singleton<DataLoader>
 
     private void Reset()
     {
-        LoadData();
         GetSpriteData();
+        LoadData();
+    }
+
+    // Lớp bọc Dictionary để JsonUtility có thể tuần tự hóa được
+    [System.Serializable]
+    public class SerializationWrapper<TKey, TValue>
+    {
+        public List<TKey> keys = new List<TKey>();
+        public List<TValue> values = new List<TValue>();
+
+        public SerializationWrapper(Dictionary<TKey, TValue> dictionary)
+        {
+            foreach (var kvp in dictionary)
+            {
+                keys.Add(kvp.Key);
+                values.Add(kvp.Value);
+            }
+        }
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class ItemButton : MonoBehaviour
 {
-    public ItemData data;
+    public ItemDataToJson data;
     public Button button;
     public Image thumb;
     public Image select;
@@ -65,7 +65,7 @@ public class ItemButton : MonoBehaviour
             // Nếu loại item hiện tại có thể không mặc cũng được 
             if (ItemBarManager.Instance.currentItemTypeButton.canNullValue)
             {
-                if (data.thumbSprite.name == "0None")
+                if (thumb.sprite.name == "0None")
                 {
                     select.gameObject.SetActive(true);
                     PlayerPrefs.SetInt(Changer.GetDataKey(data.itemtype), -1);
@@ -88,7 +88,7 @@ public class ItemButton : MonoBehaviour
             }
             else
             {
-                if (data.thumbSprite.name == "0Noneee")
+                if (thumb.sprite.name == "0Noneee")
                 {
                     PlayerPrefs.SetInt(Changer.GetDataKey(EItemType.Birthmark), -1);
                     PlayerPrefs.SetInt(Changer.GetDataKey(EItemType.Blush), -1);

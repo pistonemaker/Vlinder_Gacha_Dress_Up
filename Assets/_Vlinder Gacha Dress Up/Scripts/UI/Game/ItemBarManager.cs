@@ -7,7 +7,7 @@ public class ItemBarManager : Singleton<ItemBarManager>
 {
     public SpriteRenderer frontHair;
     public SpriteRenderer behindHair;
-    public SceneEntry sceneEntry;
+    public ItemScrollAdapter itemScrollAdapter;
     public ChooseBSHPanel chooseBSHPanel;
     public ChooseColorPanel chooseColorPanel;
     public EditColorPopup editColorPopup;
@@ -55,15 +55,15 @@ public class ItemBarManager : Singleton<ItemBarManager>
 
     public void LoadOSA(EItemType eItemType)
     {
-        sceneEntry.eItemType = eItemType;
-        sceneEntry.LoadData(eItemType);
-        sceneEntry.RefreshGrid();
+        itemScrollAdapter.eItemType = eItemType;
+        itemScrollAdapter.LoadData(eItemType);
+        //itemScrollAdapter.RefreshGrid();
     }
 
     public void LoadOSAFaceAccessories()
     {
-        sceneEntry.LoadDataAccessories();
-        sceneEntry.RefreshGrid();
+        itemScrollAdapter.LoadDataAccessories();
+        //sceneEntry.RefreshGrid();
     }
 
     private void WearItem(ItemData data)
