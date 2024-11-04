@@ -71,12 +71,13 @@ public class ItemScrollAdapter : GridAdapter<MyGridParams, MyCellViewsHolder>
 
     public void LoadDataAccessories()
     {
+        var jsonLoader = JsonLoader.Instance;
         allItemsLoaded.Clear();
-        allItemsLoaded.AddRange(JsonLoader.Instance.jsonData[EItemType.Birthmark].itemdatas);
-        allItemsLoaded.AddRange(JsonLoader.Instance.jsonData[EItemType.Blush].itemdatas);
-        allItemsLoaded.AddRange(JsonLoader.Instance.jsonData[EItemType.Nose].itemdatas);
-        allItemsLoaded.AddRange(JsonLoader.Instance.jsonData[EItemType.Earrings].itemdatas);
-        allItemsLoaded.AddRange(JsonLoader.Instance.jsonData[EItemType.Glass].itemdatas);
+        allItemsLoaded.AddRange(jsonLoader.jsonData[EItemType.Birthmark].itemdatas);
+        allItemsLoaded.AddRange(jsonLoader.jsonData[EItemType.Blush].itemdatas);
+        allItemsLoaded.AddRange(jsonLoader.jsonData[EItemType.Nose].itemdatas);
+        allItemsLoaded.AddRange(jsonLoader.jsonData[EItemType.Earrings].itemdatas);
+        allItemsLoaded.AddRange(jsonLoader.jsonData[EItemType.Glass].itemdatas);
         ResetItems(allItemsLoaded.Count);
         Refresh();
     }
@@ -104,7 +105,8 @@ public class MyCellViewsHolder : CellViewsHolder
     public void UpdateViews(ItemDataToJson data)
     {
         itemButton.data = data;
-        var handle = Addressables.LoadAssetAsync<Sprite>(data.thumbSprite);
+        var thumbPath = "Assets/_Vlinder Gacha Dress Up/Sprites Load/UI Thumb/" + data.thumbSprite;
+        var handle = Addressables.LoadAssetAsync<Sprite>(thumbPath);
         handle.Completed += (AsyncOperationHandle<Sprite> task) =>
         {
             itemButton.thumb.sprite = task.Result;
@@ -112,5 +114,6 @@ public class MyCellViewsHolder : CellViewsHolder
         
         itemButton.index = ItemIndex;
         itemButton.CheckIfSelected(null);
+        itemButton.CheckIfLocked();
     }
 }

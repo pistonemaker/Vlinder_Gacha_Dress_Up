@@ -116,13 +116,15 @@ public class ItemTypeButton : MonoBehaviour
             {
                 if (itemData.isColor)
                 {
-                    var handle = Addressables.LoadAssetAsync<Sprite>(itemData.colorSprite);
+                    var path = "Assets/_Vlinder Gacha Dress Up/Sprites Load/Item/" + itemData.colorSprite;
+                    var handle = Addressables.LoadAssetAsync<Sprite>(path);
                     handle.Completed += (AsyncOperationHandle<Sprite> task) => { targetRenderer.sprite = task.Result; };
                     Doll.Instance.hairLight.sprite = null;
 
                     if (ItemBarManager.Instance.isApplyColor)
                     {
-                        var handle2 = Addressables.LoadAssetAsync<Sprite>(itemData.sprite);
+                        var path2 = "Assets/_Vlinder Gacha Dress Up/Sprites Load/Item/" + itemData.sprite;
+                        var handle2 = Addressables.LoadAssetAsync<Sprite>(path2);
                         handle2.Completed += (AsyncOperationHandle<Sprite> task) => { targetRenderer.sprite = task.Result; };
                     }
                 }
@@ -130,13 +132,15 @@ public class ItemTypeButton : MonoBehaviour
                 {
                     if (itemData.sprite != "")
                     {
-                        var handle = Addressables.LoadAssetAsync<Sprite>(itemData.sprite);
+                        var path = "Assets/_Vlinder Gacha Dress Up/Sprites Load/Item/" + itemData.sprite;
+                        var handle = Addressables.LoadAssetAsync<Sprite>(path);
                         handle.Completed += (AsyncOperationHandle<Sprite> task) => { targetRenderer.sprite = task.Result; };
                     }
 
                     if (itemData.isLight)
                     {
-                        var handle2 = Addressables.LoadAssetAsync<Sprite>(itemData.lightSprite);
+                        var path = "Assets/_Vlinder Gacha Dress Up/Sprites Load/Item/" + itemData.lightSprite;
+                        var handle2 = Addressables.LoadAssetAsync<Sprite>(path);
                         handle2.Completed += (AsyncOperationHandle<Sprite> task) => { Doll.Instance.hairLight.sprite = task.Result; };
                     }
                     else
@@ -167,9 +171,9 @@ public class ItemTypeButton : MonoBehaviour
             }
             else
             {
-                var handle = Addressables.LoadAssetAsync<Sprite>(curItemData.sprite);
+                var path = "Assets/_Vlinder Gacha Dress Up/Sprites Load/Item/" + curItemData.sprite;
+                var handle = Addressables.LoadAssetAsync<Sprite>(path);
                 handle.Completed += (AsyncOperationHandle<Sprite> task) => { targetRenderer.sprite = task.Result; };
-
                 targetRenderer.color = color;
             }
         }
@@ -179,7 +183,8 @@ public class ItemTypeButton : MonoBehaviour
     {
         if (curItemData.isColor)
         {
-            var handle = Addressables.LoadAssetAsync<Sprite>(curItemData.colorSprite);
+            var path = "Assets/_Vlinder Gacha Dress Up/Sprites Load/Item/" + curItemData.colorSprite;
+            var handle = Addressables.LoadAssetAsync<Sprite>(path);
             handle.Completed += (AsyncOperationHandle<Sprite> task) => { targetRenderer.sprite = task.Result; };
 
             targetRenderer.color = Color.white;

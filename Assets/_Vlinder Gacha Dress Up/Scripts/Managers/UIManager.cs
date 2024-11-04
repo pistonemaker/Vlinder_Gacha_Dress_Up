@@ -7,6 +7,7 @@ public class UIManager : Singleton<UIManager>
     
     public TakeOffAllPopup takeOffAllPopup;
     public SavePopup savePopup;
+    public WatchAdsPopup watchAdsPopup;
 
     private void OnEnable()
     {

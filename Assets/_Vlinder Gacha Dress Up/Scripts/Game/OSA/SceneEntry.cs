@@ -1,49 +1,14 @@
-using System.Collections.Generic;
 using Com.TheFallenGames.OSA.CustomAdapters.GridView;
-using Com.TheFallenGames.OSA.DataHelpers;
 using Com.TheFallenGames.OSA.Demos.Common.SceneEntries;
-using UnityEngine;
 
 namespace Com.TheFallenGames.OSA.Demos.SelectAndDelete
 {
     public class SceneEntry : BaseSceneEntry<ItemScrollAdapter, MyGridParams, CellGroupViewsHolder<MyCellViewsHolder>>
     {
-        public GameData gameData;
-        public EItemType eItemType;
-        public List<ItemData> allItemsLoaded = new List<ItemData>();
-
         protected override void InitAdapters()
         {
             base.InitAdapters();
-
-            eItemType = EItemType.Body;
             var adapter = _Adapters[0];
-            //LoadData(eItemType);
-            //adapter.LazyData = new LazyDataHelper<ItemData>(adapter, CreateNewModel);
-            //adapter.LazyData.ResetItems(allItemsLoaded.Count);
-        }
-
-        public void LoadData(EItemType eitemType)
-        {
-            eItemType = eitemType;
-            allItemsLoaded.Clear();
-            allItemsLoaded.AddRange(gameData.data[eItemType].itemdatas);
-        }
-
-        public void LoadDataAccessories()
-        {
-            allItemsLoaded.Clear();
-            allItemsLoaded.AddRange(gameData.data[EItemType.Birthmark].itemdatas);
-            allItemsLoaded.AddRange(gameData.data[EItemType.Blush].itemdatas);
-            allItemsLoaded.AddRange(gameData.data[EItemType.Nose].itemdatas);
-            allItemsLoaded.AddRange(gameData.data[EItemType.Earrings].itemdatas);
-            allItemsLoaded.AddRange(gameData.data[EItemType.Glass].itemdatas);
-        }
-
-        public void RefreshGrid()
-        {
-            //_Adapters[0].LazyData.ResetItems(allItemsLoaded.Count);
-            //_Adapters[0].Refresh();
         }
 
         protected override void InitDrawer()
@@ -66,10 +31,5 @@ namespace Com.TheFallenGames.OSA.Demos.SelectAndDelete
         }
 
         #endregion
-
-        ItemData CreateNewModel(int index)
-        {
-            return allItemsLoaded[index];
-        }
     }
 }

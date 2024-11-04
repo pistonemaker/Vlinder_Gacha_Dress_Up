@@ -43,7 +43,8 @@ public class FaceAccessories : ItemTypeButton
             }
             else
             {
-                var handle = Addressables.LoadAssetAsync<Sprite>(data.sprite);
+                var path = "Assets/_Vlinder Gacha Dress Up/Sprites Load/Item/" + data.sprite;
+                var handle = Addressables.LoadAssetAsync<Sprite>(path);
                 handle.Completed += (AsyncOperationHandle<Sprite> task) =>
                 {
                     targetRender.sprite = task.Result;

@@ -28,11 +28,12 @@ public static class DataKey
     public const string ID_Nose = "ID_Nose";
     public const string ID_Glass = "ID_Glass";
 
-    
+
     public const string Doll_Button = "Doll_Button";
-    
+    public const string Count_To_Show_Inter = "Count_To_Show_Inter";
+
     #endregion
-    
+
     public static readonly int OutlineGlow = Shader.PropertyToID("_OutlineGlow");
     public static readonly int OutlineAlpha = Shader.PropertyToID("_OutlineAlpha");
     public static readonly int GreyscaleBlend = Shader.PropertyToID("_GreyscaleBlend");
@@ -40,13 +41,11 @@ public static class DataKey
 
     public static void ApplyConfig(Material mat, ConfigShader config)
     {
-        Debug.Log("set brightness: " + config.brightness + " saturation : " 
-                  + config.saturation + " hue " + config.hue);
         mat.SetFloat(OutlineAlpha, config.brightness);
         mat.SetFloat(GreyscaleBlend, config.saturation);
         mat.SetFloat(HsvShift, config.hue);
     }
-    
+
     public static void GetConFigShader(Material mat, ConfigShader config)
     {
         config.brightness = mat.GetFloat(OutlineAlpha);
@@ -59,5 +58,20 @@ public static class DataKey
         matClone.SetFloat(OutlineAlpha, mat.GetFloat(OutlineAlpha));
         matClone.SetFloat(GreyscaleBlend, mat.GetFloat(GreyscaleBlend));
         matClone.SetFloat(HsvShift, mat.GetFloat(HsvShift));
+    }
+
+    public static bool CanShowInter()
+    {
+        int count = PlayerPrefs.GetInt(Count_To_Show_Inter);
+        count++;
+        PlayerPrefs.SetInt(Count_To_Show_Inter, count);
+
+        if (count % 2 == 0)
+        {
+            PlayerPrefs.SetInt(Count_To_Show_Inter, 0);
+            return true;
+        }
+
+        return false;
     }
 }

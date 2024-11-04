@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0b7e8a9b5bce4549a69c972f3ccf55f, type: 3}
+  m_Name: Ads Data
+  m_EditorClassIdentifier: 
+  data:
+  - eItemType: 1
+    idHasAds: 03000000
+  - eItemType: 2
+    idHasAds: 03000000
+  - eItemType: 3
+    idHasAds: 03000000
+  - eItemType: 4
+    idHasAds: 03000000
+  - eItemType: 5
+    idHasAds: 03000000
+  - eItemType: 6
+    idHasAds: 03000000
+  - eItemType: 7
+    idHasAds: 03000000
+  - eItemType: 8
+    idHasAds: 03000000
+  - eItemType: 9
+    idHasAds: 03000000
+  - eItemType: 10
+    idHasAds: 03000000
+  - eItemType: 11
+    idHasAds: 03000000
+  - eItemType: 12
+    idHasAds: 03000000
+  - eItemType: 13
+    idHasAds: 03000000
+  - eItemType: 14
+    idHasAds: 03000000
+  - eItemType: 15
+    idHasAds: 03000000
+  - eItemType: 16
+    idHasAds: 03000000
+  - eItemType: 17
+    idHasAds: 03000000
+  - eItemType: 18
+    idHasAds: 03000000
+  - eItemType: 19
+    idHasAds: 03000000
+  - eItemType: 21
+    idHasAds: 03000000
+  - eItemType: 22
+    idHasAds: 03000000
+  - eItemType: 23
+    idHasAds: 03000000
+  - eItemType: 24
+    idHasAds: 03000000

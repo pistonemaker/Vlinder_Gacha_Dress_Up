@@ -40,8 +40,6 @@ public class SaveDoll : MonoBehaviour
         GetSpriteRenderers();
         images.Remove(body);
         images.Remove(background);
-        Debug.Log(dollSaveData.insightShirtMaterial.brightness + " " + dollSaveData.insightShirtMaterial.saturation + " " 
-                  + dollSaveData.insightShirtMaterial.hue);
         LoadSaveData(data);
     }
 

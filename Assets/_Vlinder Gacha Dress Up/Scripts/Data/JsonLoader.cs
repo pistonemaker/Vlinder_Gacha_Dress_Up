@@ -1,17 +1,15 @@
 using System.Collections.Generic;
-using System.IO;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class JsonLoader : Singleton<JsonLoader>
 {
-    public string jsonFilePath;
-    [ShowInInspector] public Dictionary<EItemType, ItemTypeDataToJson> jsonData = new Dictionary<EItemType, ItemTypeDataToJson>();
+    [ShowInInspector] public Dictionary<EItemType, ItemTypeDataToJson> jsonData = 
+        new Dictionary<EItemType, ItemTypeDataToJson>();
     
     protected override void Awake()
     {
         base.Awake();
-        jsonFilePath = "Assets/_Vlinder Gacha Dress Up/Scripts/Data/GameData.json";
         DontDestroyOnLoad(gameObject);
     }
 
@@ -22,15 +20,16 @@ public class JsonLoader : Singleton<JsonLoader>
 
     public void LoadJson()
     {
-        if (!File.Exists(jsonFilePath))
+        TextAsset jsonFile = Resources.Load<TextAsset>("GameData");
+    
+        if (jsonFile == null)
         {
-            Debug.LogError("Can not find .json file with path: " + jsonFilePath);
+            Debug.LogError("Can not find .json file in Resources folder");
             return;
         }
 
-        string jsonText = File.ReadAllText(jsonFilePath);
-        var deserialized = 
-            JsonUtility.FromJson<SerializationWrapper<EItemType, ItemTypeDataToJson>>(jsonText);
+        string jsonText = jsonFile.text;
+        var deserialized = JsonUtility.FromJson<SerializationWrapper<EItemType, ItemTypeDataToJson>>(jsonText);
         jsonData.Clear();
 
         for (int i = 0; i < deserialized.keys.Count; i++)

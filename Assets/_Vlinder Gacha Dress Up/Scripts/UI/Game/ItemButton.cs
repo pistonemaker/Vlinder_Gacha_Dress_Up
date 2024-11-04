@@ -7,7 +7,9 @@ public class ItemButton : MonoBehaviour
     public Button button;
     public Image thumb;
     public Image select;
+    public Image lockImg;
     public int index;
+    public bool islocked;
 
     private System.Action<object> onDisSelectItemDelegate;
     private System.Action<object> onDisSelectAccessoryDelegate;
@@ -15,6 +17,7 @@ public class ItemButton : MonoBehaviour
     private void OnEnable()
     {
         select = transform.GetChild(0).Find("Select").GetComponent<Image>();
+        lockImg = transform.GetChild(0).Find("Lock").GetComponent<Image>();
         button = transform.GetChild(0).Find("Button").GetComponent<Button>();
         select.gameObject.SetActive(false);
 
@@ -36,9 +39,17 @@ public class ItemButton : MonoBehaviour
 
     public void OnClick_WearItem()
     {
-        CheckPostEvent();
-        select.gameObject.SetActive(true);
-        this.PostEvent(EventID.On_Wear_Item, data);
+        if (islocked)
+        {
+            UIManager.Instance.watchAdsPopup.gameObject.SetActive(true);
+            UIManager.Instance.watchAdsPopup.targetButton = this;
+        }
+        else
+        {
+            CheckPostEvent();
+            select.gameObject.SetActive(true);
+            this.PostEvent(EventID.On_Wear_Item, data);
+        }
     }
 
     private void CheckPostEvent()
@@ -121,15 +132,24 @@ public class ItemButton : MonoBehaviour
         }
     }
 
-    public void OnCheckSelected()
+    public void CheckIfLocked()
     {
-        if (index == 0)
+        if (GameManager.Instance.adsData.data[(int)data.itemtype].idHasAds.Contains(index))
         {
-            select.gameObject.SetActive(true);
+            lockImg.gameObject.SetActive(true);
+            islocked = true;
         }
         else
         {
-            select.gameObject.SetActive(false);
+            lockImg.gameObject.SetActive(false);
+            islocked = false;
         }
+    }
+
+    public void UnlockItem()
+    {
+        islocked = false;
+        lockImg.gameObject.SetActive(false);
+        GameManager.Instance.adsData.data[(int)data.itemtype].idHasAds.Remove(index);
     }
 }

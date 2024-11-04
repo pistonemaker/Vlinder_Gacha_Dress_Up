@@ -99,11 +99,12 @@ public class Doll : Singleton<Doll>
 
         if (sr != null)
         {
-            // sr.sprite = GameManager.Instance.gameData.data[eItemType].itemdatas[itemIndex].sprite;
             var spritePath = JsonLoader.Instance.jsonData[eItemType].itemdatas[itemIndex].sprite;
+            
             if (spritePath != "")
             {
-                var handle = Addressables.LoadAssetAsync<Sprite>(JsonLoader.Instance.jsonData[eItemType].itemdatas[itemIndex].sprite);
+                spritePath = "Assets/_Vlinder Gacha Dress Up/Sprites Load/Item/" + spritePath;
+                var handle = Addressables.LoadAssetAsync<Sprite>(spritePath);
                 handle.Completed += (AsyncOperationHandle<Sprite> task) =>
                 {
                     sr.sprite = task.Result;
